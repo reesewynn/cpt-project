@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box;
+  font-family: Lucida Console, Lucida Sans Typewriter, monaco, Bitstream Vera Sans Mono, monospace;
+}
+
+.app {
+  padding: 10px;
+  width: content-box;
+}
+
+.main-grid {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 200px 1fr 400px 200px;
+  grid-template-rows: 300px 100px 100px;
+  grid-template-areas: "st sr sr  sr"
+                       ".  sr sr  sr"
+                       ".  .  op op";
+  max-width: 1000px;
+  margin: 0 auto;
+  /*margin-top: 2%;*/
+  padding: 10px;
+  background: #3D5174;
+  /*background-image: url('https://us.123rf.com/450wm/imichman/imichman1709/imichman170900057/85995466-abstract-geometrical-pattern-with-original-linear-techno-texture-and-repeating-thin-lines-dots-and-g.jpg?ver=6');*/
+}
+
+.threads-box {
+  /*grid-area: tr;*/
+  border: 3px solid green;
+}
+
+.actions-box {
+  grid-area: op;
+  /*border: 3px solid blue;*/
+  padding: 5px;
+}
+
+.story-box-wrapper {
+  grid-area: sr;
+  border: 3px solid orange;
+  padding: 10px;
+  background-color: #3D5174;
+}
+
+.story-box {
+  height: 100%;
+  overflow: scroll;
+  color: white;
+}
+
+.action-btn {
+  float: left;
+  height: calc(100% - 10px);
+  width: calc(33.33% - 10px);
+  margin: 5px;
+}
+
+.action-btn button {
+  height: 100%;
+  width: 100%;
+  font-size: 1.25em;
+  color: white;
+  border-radius: 2px;
+  border-width: 1px;
+}
+
+.shadow-btn {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.shadow-btn button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
+}
+
+.stats-box {
+  grid-area: st;
+  /*border: 3px solid red;*/
+  /*background-color: #2E3541;*/
+}
+
+.stat-display {
+  height: 25%;
+  /*padding-right: 2%;*/
+  /*border: 1px solid black;*/
+  /*margin-top: -1px;*/
+  margin-bottom: 10px;
+}
+
+.stat-child {
+  background-color: #b4b1ad;
+  border-radius: 2px;
+  border: 2px solid black;
+  padding-bottom: 5px;
+}
+
+.stat-label {
+  margin-top: 0px;
+  padding: 3px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid black;
+  padding-left: 2px;
+  background-color: #2980b9;
+}
+
+.stat-value {
+  padding-left: .4em;
+}
+
+#btn0 {
+  background-color: limegreen;
+}
+
+#btn1 {
+  background-color: indianred;
+}
+
+#btn2 {
+  background-color: cornflowerblue;
+}
+
+.thread-popup-wrapper {
+  grid-area: sr;
+  border: 3px solid orange;
+  padding: 10px;
+  background-color: #3D5174;
+}
+
+.thread-popup-wrapper p {
+  color: white;
+}
+
+.thread-popup {
+  /*overflow: scroll;*/
+  color: white;
+}
+
+.thread-popup-wrapper {
+  overflow: scroll;
+}
+
+.thread-box {
+  /*margin: 3px 1px 1px 0px;*/
+}
+.side-alert {
+  padding: 1px 1px 1px 1px;
+  margin: 5px 5px 5px 5px;
+  border-radius: 2px;
+  border: 1px solid lightgray;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #ff8036;
+}
+
+.current-fire {
+  background-color: #e23b0d;
+}
+
+.side-alert h4 {
+  display: inline-block;
+  padding: 3px
+}
+
+
+.side-alert img {
+  /*align: left;*/
+  float: right;
+  /*padding: 5px;*/
+  object-fit: cover;
+  margin: 8px;
+}
+
+
+.side-alert:hover {
+  /*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
+  cursor: pointer;
+}
+
+.thread-popup h2 {
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+.thread-popup h4 {
+  margin-top: 0;
+  color: white;
+}
+
+.thread-popup p {
+  margin-top: 0;
+}
