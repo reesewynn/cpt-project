@@ -1,7 +1,7 @@
 import IScene from '../IScene';
 import React from "react";
 
-class Work extends IScene {
+class WeekEnd extends IScene {
     text = <div>
         <h3> You're at work! </h3>
         <p> How hard do you work today? </p>
@@ -33,12 +33,12 @@ class WeekDay extends IScene {
     text = <div>
         <h3> It's A Bright New Day! </h3>
         <p> It's a beautiful day outside. Birds are singing. Flowers are blooming. And all these fools are trying
-        to steal your privacy!</p>
+            to steal your privacy!</p>
         <p> You've a few options: </p>
         <p> 1. Work and gain some cash towards your getaway. </p>
         <p> 2. Stay at home and try and clear your name online. </p>
         <p> What do you do?</p>
-        </div>;
+    </div>;
     //example of demonstrating buttons MAX 3
     btns = [
         {
@@ -74,9 +74,8 @@ class WeekDay extends IScene {
 
     //check decides if the action can be displayed.
     check() {
-        // return this.app.days === 0;
-        return true;
+        return this.app.days === 0;
     }
 }
 
-export default WeekDay;
+export default WeekEnd;

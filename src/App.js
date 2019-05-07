@@ -8,6 +8,7 @@ import ThreadPopup from './ThreadPopup';
 import SceneLL from "./SceneLL";
 import StartScreen from "./scenes/StartScreen";
 import WeekDay from "./scenes/WeekDay";
+import Continue from "./scenes/Continue";
 // import build from './FireBuilder';
 
 class App extends Component {
@@ -22,6 +23,8 @@ class App extends Component {
     this.state = {
       balance: 0,
       days: 0,
+      privacy: 0,
+      criminality: 0,
       showPopup: true,
       storyText: "This should never show",
       weekday: true,
@@ -57,6 +60,25 @@ class App extends Component {
     this.state.sceneLst.pop();
 
     // this.state.sceneLst.getBtns().forEach((btn, i) => this.actionsText[i] = btn.text);
+  }
+
+  pushSceneNext(data) {
+    this.state.sceneLst.pushNext(data);
+  }
+
+  pushSceneLast(data) {
+    this.state.sceneLst.pushLast(data);
+  }
+
+  next() {
+    this.state.sceneLst.pop();
+    this.setState({refreshText: !this.state.refreshText});
+  }
+
+  addText(data) {
+    let x = new Continue(this);
+    x.text = data;
+    this.state.sceneLst.pushNext(x);
   }
 
   addMoney(b) {
@@ -118,7 +140,8 @@ class App extends Component {
         <div className="main-grid">
           <StatsBox
             balance={App.toDollars(this.state.balance)}
-            days={this.state.days} />
+            days={this.state.days}
+            privacy={this.state.privacy}/>
           <StoryBox contents={this.state.storyText}/>
           <ThreadPopup visible={this.state.showPopup} popupText={this.state.sceneLst.getText()}/>
           <ActionsBox btnText={actionsText} handler={i => this.handleClick(i)}/>

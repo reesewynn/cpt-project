@@ -4,8 +4,9 @@ import StatDisplay from './StatDisplay';
 class StatsBox extends Component {
 
   labels = {
-    'balance': 'Bank balance',
-    'days': 'Days since launch'
+    'balance': 'Bank Balance',
+    'days': 'Days Since Launch',
+    'privacy': 'Current Privacy',
   };
 
   render() {

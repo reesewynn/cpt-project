@@ -23,7 +23,7 @@ class StartScreen extends IScene {
                 //to cause a new update
                 // this.app.setState({refreshText: !(this.refreshText)});
                 this.app.endCycle();
-            },
+            }
         }
     ];
 
