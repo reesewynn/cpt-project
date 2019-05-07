@@ -23,7 +23,8 @@ class App extends Component {
     this.state = {
       balance: 0,
       days: 0,
-      privacy: 0,
+      privacy: 100,
+      fame: 0,
       criminality: 0,
       showPopup: true,
       storyText: "This should never show",
@@ -33,6 +34,7 @@ class App extends Component {
       refreshText: true,
       sceneLst: new SceneLL(),
       nextScene: {},
+      knowRights: false,
       //insert remaining flags here
     };
     this.state.sceneLst.pushNext(new StartScreen(this));
@@ -81,13 +83,17 @@ class App extends Component {
     this.state.sceneLst.pushNext(x);
   }
 
-  addMoney(b) {
-    this.targetBalance += b;
+  addFame(fame) {
+    
+  }
+
+  addMoney(amt) {
+    this.targetBalance += amt;
     this.maybeAnimate();
   }
 
-  addDays(d) {
-    this.targetDays += d;
+  addDays(days) {
+    this.targetDays += days;
     this.maybeAnimate();
   }
 
