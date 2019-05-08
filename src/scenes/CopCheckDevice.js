@@ -52,13 +52,13 @@ class CopCheckDevice extends IScene {
                     const x = <div>
                         <p>
                             Your good-for-nothing, so-called “lawyer” botches 
-                            the case, and you’re sent to jail. 
+                            the case, and you’re sent to jail for 12 days.
                         </p>
                     </div>
                     this.app.resetCriminality();
                     this.app.changeEmployability(-20);
                     this.app.changeFame(20);
-                    // TODO: Jail time and cash penalties
+                    this.app.addDays(12);
                     this.app.pushSceneNext(new EndCycleScene(this.app));
                     this.app.addText(x);
                     this.app.next();
