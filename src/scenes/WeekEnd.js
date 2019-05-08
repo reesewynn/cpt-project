@@ -2,7 +2,6 @@ import IScene from '../IScene';
 import React from "react";
 import BrowseWebStart from "./BrowseWeb"
 import GamingStart from "./Gaming"
-import StudyingStart from "./Studying"
 
 class PassingTime extends IScene {
 
@@ -142,35 +141,20 @@ class Gym extends IScene {
     ];
 }
 
-class Stay extends IScene {
+class Studying extends IScene {
     text = <div>
-        <h3>Chill Day</h3>
-        <p>You take the day to relax and chill at home. What do you do?</p>
-        <p> 1. Try out that new social media platform</p>
-        <p> 2. Hit up the gym</p>
-        <p> 3. Do nothing</p>
-    </div>;
+        <h3> How could they!?</h3>
+        <p> You spend the night working on things for you job and brushing up on your skills. How studious.</p>
+    </div>
     btns = [
         {
-            text: 'Gym',
-            func: () => {
-                let x = <div>
-                    <h3>Don't Skip Leg Day</h3>
-                    <p> You have a pleasant time working out at the gym! WHo doesn't love fitness!</p>
-                </div>;
-                this.app.pushSceneNext(new Gym(this.app));
-                this.app.addText(x);
-                this.app.next();
-            }
+          text: "Continue",
+          func: () => {
+              this.app.changeEmployability(5);
+              this.app.endCycle();
+          }
         },
-        {
-            text: 'Nothing',
-            func: () => {this.app.endCycle();}
-
-        }
     ];
-
-
 }
 
 class Home extends IScene {
@@ -191,7 +175,7 @@ class Home extends IScene {
         {
             text: 'Studying',
             func: () => {
-              this.app.pushSceneNext(new StudyingStart(this.app));
+              this.app.pushSceneNext(new Studying(this.app));
               this.app.next();
             }
         },
@@ -253,16 +237,7 @@ class WeekEnd extends IScene {
         {
             text: 'Go out',
             func: () => {
-                this.app.pushSceneNext(new Party(this.app));
-                let x = <div>
-                    <h3>Time to get funky!</h3>
-                    <p>
-                        So you wanna go out and get your jam on! You call up
-                        some friends to find out where everyone's at tonight
-                        and put on your party clothes!
-                    </p>
-                </div>;
-                this.app.addText(x);
+                this.app.pushSceneNext(new goOut(this.app));
                 this.app.next();
             },
         },
