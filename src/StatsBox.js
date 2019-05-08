@@ -5,8 +5,13 @@ class StatsBox extends Component {
 
   labels = {
     'balance': 'Bank Balance',
-    'days': 'Days Since Launch',
+    'days': 'Day',
     'privacy': 'Current Privacy',
+    'fame': "Fame",
+    'popularity': "Popularity",
+    'criminality': "Criminality",
+    'employability': "Employability",
+
   };
 
   render() {

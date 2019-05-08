@@ -58,7 +58,7 @@ class App extends Component {
 
     endCycle() {
         //TODO: insert end of day here
-        console.log("ending the cycle."); 
+        console.log("ending the cycle.");
         this.setState({actionProb: Math.random()});
         //game over logic
         //win game!
@@ -218,7 +218,11 @@ class App extends Component {
                     <StatsBox
                         balance={App.toDollars(this.state.balance)}
                         days={this.state.days}
-                        privacy={this.state.privacy}/>
+                        privacy={this.state.privacy}
+                        fame={this.state.fame}
+                        popularity={this.state.popularity}
+                        criminality={this.state.criminality}
+                        employability={this.state.employability}/>
                     <StoryBox contents={this.state.storyText}/>
                     <ThreadPopup visible={this.state.showPopup} popupText={this.state.sceneLst.getText()}/>
                     <ActionsBox btnText={actionsText} handler={i => this.handleClick(i)}/>
