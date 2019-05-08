@@ -32,7 +32,7 @@ class RecordStop extends IScene {
                         </div>
                     : 
                         <div>
-                            <h3>You have the right to be an attorney...?</h3>
+                            <h3>You have the right to...be an attorney...?</h3>
                             <p>
                                 Unfortunately, you don't know your rights and the 
                                 cop ignores your stuttering attempts to exercise 
