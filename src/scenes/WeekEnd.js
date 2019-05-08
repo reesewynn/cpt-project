@@ -1,21 +1,36 @@
 import IScene from '../IScene';
 import React from "react";
+import BrowseWebStart from "./BrowseWeb"
+import GamingStart from "./Gaming"
 
 class Home extends IScene {
 
     text = <div>
         <h3>Time to relax.</h3>
-        <p>Well that chocks up your excitement for the week.</p>
-        <p>You chill home and rest up for the week ahead.</p>
+        <p> You decided to be a hermit and stay at home. So what do you want to do?</p>
     </div>;
 
     btns = [
         {
-            text: 'Continue',
+            text: 'Laptop',
+            func: () => {
+                this.app.pushSceneNext(new BrowseWebStart(this.app));
+                this.app.next();
+            }
+        },
+        {
+            text: 'Streaming',
+            func: () => {
+              this.app.pushSceneNext(new GamingStart(this.app));
+              this.app.next();
+            }
+        },
+        {
+            text: 'Study/Improve Skills',
             func: () => {
                 this.app.endCycle();
             }
-        }
+        },
     ];
 }
 
@@ -23,13 +38,13 @@ class Party extends IScene {
 
     text = <div>
         <h3> Time to dance! </h3>
-        <p> 
-            Everything seems to be going well at the party until the music stops 
+        <p>
+            Everything seems to be going well at the party until the music stops
             and your friend shouts that his phone died.
         </p>
-        <p> 
-            You tell him you'd be happy to take over the aux and play your new 
-            fire mixtape, but he insists you have fun with the others instead. 
+        <p>
+            You tell him you'd be happy to take over the aux and play your new
+            fire mixtape, but he insists you have fun with the others instead.
         </p>
         <p> You've got a few options:</p>
         <p> 1. Insist you play your beats. </p>
@@ -44,10 +59,10 @@ class Party extends IScene {
             func: () => {
                 var x = <div>
                     <h3> Well... that happened. </h3>
-                    <p> 
-                        You gave it your all, but unfortunately the crowd didn't 
-                        seem to love your track. Even more unfortunately, 
-                        someone made a video of your awful dancing to Old Town 
+                    <p>
+                        You gave it your all, but unfortunately the crowd didn't
+                        seem to love your track. Even more unfortunately,
+                        someone made a video of your awful dancing to Old Town
                         Road and posted it online!
                     </p>
                 </div>;
@@ -55,10 +70,10 @@ class Party extends IScene {
                 if (Math.random() < this.app.state.popularity * .01) {
                     x = <div>
                         <h3> Great work! </h3>
-                        <p> 
-                            People just loved your playlist! Everyone was having 
-                            so much fun that they didn't even remember who 
-                            started the tracks! 
+                        <p>
+                            People just loved your playlist! Everyone was having
+                            so much fun that they didn't even remember who
+                            started the tracks!
                         </p>
                     </div>;
                     popToAdd = 5;
@@ -74,23 +89,23 @@ class Party extends IScene {
             func: () => {
                 let x = <div>
                     <h3> Not your best idea... </h3>
-                    <p> 
-                        You hand over your phone and tell him your pin. What 
-                        could go wrong, right? 
+                    <p>
+                        You hand over your phone and tell him your pin. What
+                        could go wrong, right?
                     </p>
                     <p></p>
                     <p></p>
                     <p> A lot. A lot could go wrong, and it did.</p>
-                    <p> 
-                        Before you know it the DJ shouts out for everyone to 
-                        come take a look at something. 
+                    <p>
+                        Before you know it the DJ shouts out for everyone to
+                        come take a look at something.
                     </p>
-                    <p> 
-                        It's your phone. And your nudes that you forgot to 
+                    <p>
+                        It's your phone. And your nudes that you forgot to
                         delete are pulled up for all to see.
                     </p>
-                    <p> 
-                        You snatch your phone up, but the damage is done. You 
+                    <p>
+                        You snatch your phone up, but the damage is done. You
                         feel your privacy diminished.
                     </p>
                 </div>
@@ -129,9 +144,9 @@ class WeekEnd extends IScene {
                 this.app.pushSceneNext(new Party(this.app));
                 let x = <div>
                     <h3>Time to get funky!</h3>
-                    <p> 
-                        So you wanna go out and get your jam on! You call up 
-                        some friends to find out where everyone's at tonight 
+                    <p>
+                        So you wanna go out and get your jam on! You call up
+                        some friends to find out where everyone's at tonight
                         and put on your party clothes!
                     </p>
                 </div>;
