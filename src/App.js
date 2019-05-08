@@ -43,6 +43,7 @@ class App extends Component {
             knowRights: false,
             //insert remaining flags here
             laptop_infected: false,
+            gotVideodInCopStop: false,
         };
         this.state.sceneLst.pushNext(new StartScreen(this));
     }
@@ -79,9 +80,10 @@ class App extends Component {
         else {
             this.addDays(2);
             this.state.sceneLst.pushNext(new WeekDay(this));
-
         }
-        this.setState({weekday: !this.state.weekday});
+        this.setState(prevState => ({
+            weekday: !prevState.weekday
+        }));
         this.next();
 
         // this.state.sceneLst.getBtns().forEach((btn, i) => this.actionsText[i] = btn.text);
@@ -95,68 +97,91 @@ class App extends Component {
         this.state.sceneLst.pushLast(data);
     }
 
-    next() {
-        this.state.sceneLst.pop();
-        this.setState({refreshText: !this.state.refreshText});
-    }
-
     addText(data) {
         let x = new Continue(this);
         x.text = data;
         this.state.sceneLst.pushNext(x);
     }
 
+    next() {
+        this.state.sceneLst.pop();
+        this.setState(prevState => ({
+            refreshText: !prevState.refreshText
+        })); 
+    }
+    
     changePrivacy(amt) {
-        this.privacy += amt;
+        this.setState(prevState => ({
+            privacy: prevState.privacy + amt
+        })); 
         this.maybeAnimate();
     }
-
+    
     changeFame(amt) {
-        this.fame += amt;
+        this.setState(prevState => ({
+            fame: prevState.fame + amt
+        })); 
         this.maybeAnimate();
     }
 
     changePopularity(amt) {
-        this.popularity += amt;
-        if (this.popularity > 100) {
-            this.fame += this.popularity - 100;
-            this.popularity = 100;
-        }
+        const excess = this.state.popularity + amt - 100;
+        this.setState(prevState => ({
+            popularity: Math.min(prevState.popularity + amt, 100),
+            fame: Math.max(prevState.fame, prevState.fame + excess),
+        })); 
         this.maybeAnimate();
     }
-
+    
     changeMoney(amt) {
-        this.targetBalance += amt;
+        this.setState(prevState => ({
+            balance: prevState.balance + amt
+        })); 
         this.maybeAnimate();
     }
 
     changeEmployability(amt) {
-        this.employability += amt;
+        this.setState(prevState => ({
+            employability: prevState.employability + amt
+        })); 
         this.maybeAnimate();
     }
 
     changeCriminality(amt) {
-        this.criminality += amt;
+        this.setState(prevState => ({
+            criminality: prevState.criminality + amt
+        })); 
         this.maybeAnimate();
     }
 
     resetCriminality() {
-        this.criminality = 50;
+        this.setState({criminality: 50});
         this.maybeAnimate();
     }
 
-    addDays(days) {
-        this.targetDays += days;
+    addDays(daysPassed) {
+        this.setState(prevState => ({
+            days: prevState.days + daysPassed
+        })); 
         this.maybeAnimate();
+    }
+
+    setGotVideodInCopStop(gotVidded) {
+        this.state.gotVideodInCopStop = gotVidded;
     }
 
     maybeAnimate() {
-        if ((this.targetBalance !== this.state.balance ||
-            this.targetDays !== this.state.days) && this.animateInterval < 0) {
+        if (
+            (
+                this.targetBalance !== this.state.balance 
+                || this.targetDays !== this.state.days
+            ) 
+            && this.animateInterval < 0
+        ) {
             this.animateInterval = setInterval(this.animate.bind(this), 30);
         }
     }
-
+    
     animate() {
         let active = false;
         if (this.targetBalance !== this.state.balance) {
@@ -166,28 +191,28 @@ class App extends Component {
             this.setState(prevState => {return {balance: prevState.balance + sign * change};});
             active = true;
         }
-
+    
         if (this.targetDays !== this.state.days) {
             let diff = this.targetDays - this.state.days;
             let sign = diff / Math.abs(diff);
             this.setState(prevState => {return {days: prevState.days + sign};});
             active = true;
         }
-
+    
         if (!active) {
             clearInterval(this.animateInterval);
             this.animateInterval = -1;
         }
     }
-
+    
     static toDollars(amount) {
         return "$" + App.toThousandDelimited(amount);
     }
-
+    
     static toThousandDelimited(amount) {
         return amount.toString().replace(/\d(?=(\d{3})+$)/g, '$&,');
     }
-
+    
     render() {
         let actionsText = ['', '', ''];
         if(this.state.sceneLst != null) {
@@ -208,6 +233,7 @@ class App extends Component {
             </div>
         );
     }
+    
 }
 
 export default App;
