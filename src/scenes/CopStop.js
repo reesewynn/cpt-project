@@ -3,19 +3,30 @@ import React from 'react';
 import { Work } from './WeekDay';
 import EndCycleScene from './EndCycleScene';
 
-function addGotVideodEvent() {
-    this.app.changePrivacy(-15);
-    this.app.changeFame(10);
-    const text = <div>
+var gotVidded = false;
+
+class gotViddedEvent extends IScene {
+
+    text = <div>
         <h3>You're trending.</h3>
         <p>
             After the incident, you find that the video of your arrest is 
             trending on YouTube.
         </p>
         <p>There goes more of your privacy.</p>
-    </div>
-    this.app.addText(text);
-    this.app.setGotVideodInCopStop(false);
+    </div>;
+
+    btns = [
+        {
+            text: 'Continue',
+            func: () => {
+                this.app.changePrivacy(-15);
+                this.app.changeFame(10);
+                gotVidded = false;
+                this.app.next();
+            },
+        },
+    ];
 }
 
 class ArrestedCopStop extends IScene {
@@ -55,8 +66,8 @@ class ArrestedCopStop extends IScene {
                 this.app.changeEmployability(-2);
                 this.app.changePrivacy(-5);
                 this.app.pushSceneNext(new EndCycleScene(this.app));
-                if (this.app.state.gotVideodInCopStop) {
-                    addGotVideodEvent();
+                if (gotVidded) {
+                    this.app.pushSceneNext(new gotViddedEvent(this.app));
                 }
                 this.app.addText(x);
                 this.app.next();
@@ -78,8 +89,8 @@ class ArrestedCopStop extends IScene {
                 this.app.changePrivacy(-5);
                 this.app.addDays(19);
                 this.app.pushSceneNext(new EndCycleScene(this.app));
-                if (this.app.state.gotVideodInCopStop) {
-                    addGotVideodEvent();
+                if (gotVidded) {
+                    this.app.pushSceneNext(new gotViddedEvent(this.app));
                 }
                 this.app.addText(x);
                 this.app.next();
@@ -103,11 +114,8 @@ class ReactToPoPo extends IScene {
         {
             text: 'Protest',
             func: () => {
-                const getsVideod = Math.random() < 0.8;
-                if (getsVideod) {
-                    this.app.setGotVideodInCopStop(true);
-                }
-                const text = (getsVideod 
+                gotVidded = Math.random() < 0.8;
+                const text = (gotVidded
                     ? 
                         <div>
                             <h3>Move your bloomin' arse!</h3>
@@ -137,11 +145,8 @@ class ReactToPoPo extends IScene {
         {
             text: 'Obey',
             func: () => {
-                const getsVideod = Math.random() < 0.4;
-                if (getsVideod) {
-                    this.app.setGotVideodInCopStop(true);
-                }
-                const text = (getsVideod 
+                gotVidded = Math.random() < 0.8;
+                const text = (gotVidded 
                     ? 
                         <div>
                             <h3>Okay, I'm going!</h3>
@@ -186,8 +191,8 @@ class ReactToPoPo extends IScene {
                 <p>With a sigh, you continue on your way.</p>
             </div>;
             this.app.pushSceneNext(new Work(this.app));
-            if (this.app.state.gotVideodInCopStop) {
-                addGotVideodEvent();
+            if (gotVidded) {
+                this.app.pushSceneNext(new gotViddedEvent(this.app));
             }
             this.app.addText(noArrestText);
         }

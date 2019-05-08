@@ -132,7 +132,7 @@ class WitnessCopStop extends IScene {
             text: 'Continue driving',
             func: () => {
                 const x = <div>
-                    <h3>Back to the grindstone.</h3>
+                    <h3>Ain't nobody got time for dat.</h3>
                     <p>
                         You continue on your way. The slowdown from everyone 
                         staring behind you eventually causes a traffic jam. 

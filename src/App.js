@@ -44,7 +44,6 @@ class App extends Component {
             //insert remaining flags here
             laptop_infected: false,
             has_weed: false,
-            gotVideodInCopStop: false,
         };
         this.state.sceneLst.pushNext(new StartScreen(this));
     }
@@ -165,10 +164,6 @@ class App extends Component {
             days: prevState.days + daysPassed
         }));
         this.maybeAnimate();
-    }
-
-    setGotVideodInCopStop(gotVidded) {
-        this.setState({gotVideodInCopStop: gotVidded});
     }
 
     maybeAnimate() {
