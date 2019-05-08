@@ -30,7 +30,7 @@ class App extends Component {
             criminality: 0,
             employability: 70,
             goal: 1000,
-            showPopup: true, 
+            showPopup: true,
             storyText: "This should never show",
             weekday: false,
             popupText: "This is a popup test",
@@ -43,6 +43,7 @@ class App extends Component {
             knowRights: false,
             //insert remaining flags here
             laptop_infected: false,
+            has_weed: false,
             gotVideodInCopStop: false,
         };
         this.state.sceneLst.pushNext(new StartScreen(this));
@@ -107,20 +108,20 @@ class App extends Component {
         this.state.sceneLst.pop();
         this.setState(prevState => ({
             refreshText: !prevState.refreshText
-        })); 
+        }));
     }
-    
+
     changePrivacy(amt) {
         this.setState(prevState => ({
             privacy: prevState.privacy + amt
-        })); 
+        }));
         this.maybeAnimate();
     }
-    
+
     changeFame(amt) {
         this.setState(prevState => ({
             fame: prevState.fame + amt
-        })); 
+        }));
         this.maybeAnimate();
     }
 
@@ -129,28 +130,28 @@ class App extends Component {
         this.setState(prevState => ({
             popularity: Math.min(prevState.popularity + amt, 100),
             fame: Math.max(prevState.fame, prevState.fame + excess),
-        })); 
+        }));
         this.maybeAnimate();
     }
-    
+
     changeMoney(amt) {
         this.setState(prevState => ({
             balance: prevState.balance + amt
-        })); 
+        }));
         this.maybeAnimate();
     }
 
     changeEmployability(amt) {
         this.setState(prevState => ({
             employability: prevState.employability + amt
-        })); 
+        }));
         this.maybeAnimate();
     }
 
     changeCriminality(amt) {
         this.setState(prevState => ({
             criminality: prevState.criminality + amt
-        })); 
+        }));
         this.maybeAnimate();
     }
 
@@ -162,7 +163,7 @@ class App extends Component {
     addDays(daysPassed) {
         this.setState(prevState => ({
             days: prevState.days + daysPassed
-        })); 
+        }));
         this.maybeAnimate();
     }
 
@@ -173,15 +174,15 @@ class App extends Component {
     maybeAnimate() {
         if (
             (
-                this.targetBalance !== this.state.balance 
+                this.targetBalance !== this.state.balance
                 || this.targetDays !== this.state.days
-            ) 
+            )
             && this.animateInterval < 0
         ) {
             this.animateInterval = setInterval(this.animate.bind(this), 30);
         }
     }
-    
+
     animate() {
         let active = false;
         if (this.targetBalance !== this.state.balance) {
@@ -191,28 +192,28 @@ class App extends Component {
             this.setState(prevState => {return {balance: prevState.balance + sign * change};});
             active = true;
         }
-    
+
         if (this.targetDays !== this.state.days) {
             let diff = this.targetDays - this.state.days;
             let sign = diff / Math.abs(diff);
             this.setState(prevState => {return {days: prevState.days + sign};});
             active = true;
         }
-    
+
         if (!active) {
             clearInterval(this.animateInterval);
             this.animateInterval = -1;
         }
     }
-    
+
     static toDollars(amount) {
         return "$" + App.toThousandDelimited(amount);
     }
-    
+
     static toThousandDelimited(amount) {
         return amount.toString().replace(/\d(?=(\d{3})+$)/g, '$&,');
     }
-    
+
     render() {
         let actionsText = ['', '', ''];
         if(this.state.sceneLst != null) {
@@ -233,7 +234,7 @@ class App extends Component {
             </div>
         );
     }
-    
+
 }
 
 export default App;
