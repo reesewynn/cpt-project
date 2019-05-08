@@ -9,6 +9,7 @@ import SceneLL from "./SceneLL";
 import StartScreen from "./scenes/StartScreen";
 import WeekDay from "./scenes/WeekDay";
 import Continue from "./scenes/Continue";
+import WeekEnd from "./scenes/WeekEnd";
 // import build from './FireBuilder';
 
 class App extends Component {
@@ -27,12 +28,13 @@ class App extends Component {
       criminality: 0,
       showPopup: true,
       storyText: "This should never show",
-      weekday: true,
+      weekday: false,
       popupText: "This is a popup test",
       actionProb: 0,
       refreshText: true,
       sceneLst: new SceneLL(),
-      nextScene: {},
+      // nextScene: {},
+      askedPass: false,
       //insert remaining flags here
     };
     this.state.sceneLst.pushNext(new StartScreen(this));
@@ -41,23 +43,26 @@ class App extends Component {
   handleClick(i) {
     if (this.state.sceneLst.getBtns() == null) return;
     // if (this.state.sceneLst.getBtns() > i) {
-      console.log("I got here");
+    //   console.log("I got here");
       this.state.sceneLst.getBtns()[i].func();
     // }
   }
 
-
-
   endCycle() {
     //TODO: insert end of day here
     this.setState({actionProb: Math.random()});
-    this.setState({nextScene: this.state.nextScene.constructor(this)});
+    // this.setState({nextScene: this.state.nextScene.constructor(this)});
     if(this.state.weekday){
-      this.state.sceneLst.pushNext(new WeekDay(this));
       this.addDays(5);
+      this.state.sceneLst.pushNext(new WeekEnd(this));
     }
-    //TODO: else weekend
-    this.state.sceneLst.pop();
+    else {
+      this.addDays(2);
+      this.state.sceneLst.pushNext(new WeekDay(this));
+
+    }
+    this.setState({weekday: !this.state.weekday});
+    this.next();
 
     // this.state.sceneLst.getBtns().forEach((btn, i) => this.actionsText[i] = btn.text);
   }
@@ -134,7 +139,7 @@ class App extends Component {
     if(this.state.sceneLst != null) {
       this.state.sceneLst.getBtns().forEach((btn, i) => actionsText[i] = btn.text);
     }
-    console.log("test");
+    // console.log("test");
     return (
       <div className="app">
         <div className="main-grid">
