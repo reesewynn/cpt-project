@@ -12,29 +12,35 @@ class RecordStop extends IScene {
             to stop filming.
         </p>
     </div>;
+
     btns = [
         {
             text: 'Exercise your rights',
             func: () => {
-                const expressRights = this.app.state.knowRights 
-                ? <div>
-                        <p>
-                            After a brief interaction, the police officer is 
-                            forced to acknowledge your right to film the 
-                            officers performing their public duties. He 
-                            grudgingly walks away and leaves you alone. Later 
-                            you upload the video, which ends up getting millions 
-                            of views.
-                        </p>
-                    </div>
-                    : <div>
-                        <p>
-                            Unfortunately, you don't know your rights and the 
-                            cop ignores your stuttering attempts to exercise 
-                            them. The cop detains you, forcibly takes your 
-                            phone, and searches through it.
-                        </p>
-                    </div>;
+                const expressRights = (this.app.state.knowRights 
+                    ? 
+                        <div>
+                            <h3>Pull out that pocket Constitution.</h3>
+                            <p>
+                                After a brief interaction, the police officer is 
+                                forced to acknowledge your right to film the 
+                                officers performing their public duties. He 
+                                grudgingly walks away and leaves you alone. 
+                                Later you upload the video, which ends up 
+                                getting millions of views.
+                            </p>
+                        </div>
+                    : 
+                        <div>
+                            <h3>You have the right to be an attorney...?</h3>
+                            <p>
+                                Unfortunately, you don't know your rights and the 
+                                cop ignores your stuttering attempts to exercise 
+                                them. The cop detains you, forcibly takes your 
+                                phone, and searches through it.
+                            </p>
+                        </div>
+                );
                 if (this.app.knowRights) {
                     this.app.changeFame(5);
                     this.app.changeMoney(100);
@@ -49,6 +55,7 @@ class RecordStop extends IScene {
             text: 'Put away your phone',
             func: () => {
                 const x = <div>
+                    <h3>Not worth it.</h3>
                     <p>
                         You don’t want to cause trouble, and the police officer 
                         seems awfully upset. You grudgingly put your phone away 
@@ -64,6 +71,7 @@ class RecordStop extends IScene {
             text: 'Refuse',
             func: () => {
                 const x = <div>
+                    <h3>It doesn't end well.</h3>
                     <p>
                         The cop detains you, forcibly takes your phone, and 
                         searches through it. 
@@ -82,6 +90,7 @@ class PullOver extends IScene {
         <p>The scene captures your interest, and you decide to pull over.</p>
         <p>Do you record it?</p>
     </div>;
+
     btns = [
         {
             text: 'Record it',
@@ -115,7 +124,7 @@ class WitnessCopStop extends IScene {
         <p>On your way, you spot a police officer pulling someone over. </p>
         <p>What do you do?</p>
     </div>;
-    //example of demonstrating buttons MAX 3
+
     btns = [
         {
             text: 'Continue driving',
@@ -138,7 +147,7 @@ class WitnessCopStop extends IScene {
                 this.app.pushSceneNext(new PullOver(this.app));
                 this.app.next();
             },
-        }
+        },
     ];
 }
 

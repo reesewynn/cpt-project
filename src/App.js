@@ -9,7 +9,7 @@ import SceneLL from "./SceneLL";
 import StartScreen from "./scenes/StartScreen";
 import WeekDay from "./scenes/WeekDay";
 import Continue from "./scenes/Continue";
-import WitnessCopStop from './scenes/WitnessCopStop';
+import WeekEnd from "./scenes/WeekEnd";
 // import build from './FireBuilder';
 
 class App extends Component {
@@ -26,42 +26,49 @@ class App extends Component {
       days: 0,
       privacy: 100,
       fame: 0,
+      popularity: 30,
       criminality: 0,
       employability: 70,
       showPopup: true,
       storyText: "This should never show",
-      weekday: true,
+      weekday: false,
       popupText: "This is a popup test",
       actionProb: 0,
       refreshText: true,
       sceneLst: new SceneLL(),
+      // nextScene: {},
+      askedPass: false,
       nextScene: {},
       knowRights: false,
       //insert remaining flags here
     };
-    this.state.sceneLst.pushNext(new WitnessCopStop(this));
+    this.state.sceneLst.pushNext(new StartScreen(this));
   }
 
   handleClick(i) {
     if (this.state.sceneLst.getBtns() == null) return;
     // if (this.state.sceneLst.getBtns() > i) {
-      console.log("I got here");
+    //   console.log("I got here");
       this.state.sceneLst.getBtns()[i].func();
     // }
   }
 
-
-
   endCycle() {
     //TODO: insert end of day here
+    console.log("ending the cycle.");
     this.setState({actionProb: Math.random()});
-    this.setState({nextScene: this.state.nextScene.constructor(this)});
+    // this.setState({nextScene: this.state.nextScene.constructor(this)});
     if(this.state.weekday){
-      this.state.sceneLst.pushNext(new WeekDay(this));
       this.addDays(5);
+      this.state.sceneLst.pushNext(new WeekEnd(this));
     }
-    //TODO: else weekend
-    this.state.sceneLst.pop();
+    else {
+      this.addDays(2);
+      this.state.sceneLst.pushNext(new WeekDay(this));
+
+    }
+    this.setState({weekday: !this.state.weekday});
+    this.next();
 
     // this.state.sceneLst.getBtns().forEach((btn, i) => this.actionsText[i] = btn.text);
   }
@@ -85,8 +92,22 @@ class App extends Component {
     this.state.sceneLst.pushNext(x);
   }
 
+  changePrivacy(amt) {
+    this.privacy += amt;
+    this.maybeAnimate();
+  }
+
   changeFame(amt) {
     this.fame += amt;
+    this.maybeAnimate();
+  }
+
+  changePopularity(amt) {
+    this.popularity += amt;
+    if (this.popularity > 100) {
+      this.fame += this.popularity - 100;
+      this.popularity = 100;
+    }
     this.maybeAnimate();
   }
 
@@ -158,7 +179,7 @@ class App extends Component {
     if(this.state.sceneLst != null) {
       this.state.sceneLst.getBtns().forEach((btn, i) => actionsText[i] = btn.text);
     }
-    console.log("test");
+    // console.log("test");
     return (
       <div className="app">
         <div className="main-grid">
