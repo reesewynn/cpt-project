@@ -42,7 +42,7 @@ class Party extends IScene {
         {
             text: 'Grab The Aux',
             func: () => {
-                let x = <div>
+                var x = <div>
                     <h3> Well... that happened. </h3>
                     <p> 
                         You gave it your all, but unfortunately the crowd didn't 
@@ -51,7 +51,7 @@ class Party extends IScene {
                         Road and posted it online!
                     </p>
                 </div>;
-                const popToAdd = -5;
+                var popToAdd = -5;
                 if (Math.random() < this.app.state.popularity * .01) {
                     x = <div>
                         <h3> Great work! </h3>
