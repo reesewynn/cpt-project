@@ -2,8 +2,22 @@ import IScene from '../IScene';
 import React from "react";
 import BrowseWebStart from "./BrowseWeb"
 import GamingStart from "./Gaming"
-import StudyingStart from "./Studying"
-import EndCycleScene from './EndCycleScene';
+
+class NetflixEx extends IScene {
+    text = <div>
+        <p> Unbeknownst to you, your watch history just got added to a special database. Netflix is holding a competition for better recommendation algorithms. This database, with your semi-anonymized data, will serve as a training set. Better hope nobody digs into that database too hard and finds out about your stranger preferences. </p>
+    </div>;
+
+    btns = [
+        {
+            text: 'Continue',
+            func: () => {
+                this.app.changePrivacy(-2);
+                this.app.endCycle();
+            }
+        },
+    ];
+}
 
 class PassingTime extends IScene {
 
@@ -14,7 +28,7 @@ class PassingTime extends IScene {
 
     btns = [
         {
-            text: 'Laptop',
+            text: 'Browsing',
             func: () => {
                 this.app.pushSceneNext(new BrowseWebStart(this.app));
                 this.app.next();
@@ -30,8 +44,14 @@ class PassingTime extends IScene {
         {
             text: 'Watch Netflix',
             func: () => {
-                self.state.changePrivacy(-2);
-                this.app.endCycle();
+                if (Math.random() < 0.3) {
+                  this.app.pushSceneNext(new NetflixEx(this.app))
+                  this.app.next();
+                } else {
+                  this.app.changePrivacy(0);
+                  this.app.endCycle();
+                }
+
             }
         },
     ];
@@ -81,10 +101,9 @@ class Party extends IScene {
                     </div>;
                     popToAdd = 5;
                 }
-                this.app.changePopularity(popToAdd);
-                this.app.pushSceneNext(new EndCycleScene(this.app));
                 this.app.addText(x);
-                this.app.next();
+                this.app.changePopularity(popToAdd);
+                this.app.endCycle();
             },
         },
         {
@@ -111,11 +130,10 @@ class Party extends IScene {
                         You snatch your phone up, but the damage is done. You
                         feel your privacy diminished.
                     </p>
-                </div>;
-                this.app.pushSceneNext(new EndCycleScene(this.app));
+                </div>
                 this.app.addText(x);
                 this.app.changePrivacy(-5);
-                this.app.next();
+                this.app.endCycle();
             },
         },
         {
@@ -125,17 +143,14 @@ class Party extends IScene {
             },
         },
     ];
-
 }
-
 class Gym extends IScene {
     text = <div>
         <h3> How could they!?</h3>
         <p> Someone at the gym with you recorded you working out and really struggling to bench! Do you even lift, bro?
         </p>
         <p> They posted it online and because you live in a one-party consent state, you have no recourse!</p>
-    </div>;
-
+    </div>
     btns = [
         {
           text: "Continue",
@@ -145,7 +160,6 @@ class Gym extends IScene {
         },
     ];
 }
-
 class Studying extends IScene {
     text = <div>
         <h3> How could they!?</h3>
@@ -161,20 +175,24 @@ class Studying extends IScene {
         },
     ];
 }
-
 class Home extends IScene {
-
     text = <div>
         <h3>Time to relax.</h3>
         <p> You decided to be a hermit and stay at home. So what do you want to do?</p>
     </div>;
-
     btns = [
         {
-            text: 'Online',
+            text: 'Laptop',
             func: () => {
                 this.app.pushSceneNext(new PassingTime(this.app));
                 this.app.next();
+            }
+        },
+        {
+            text: 'Invite Friends Over',
+            func: () => {
+
+                this.app.endCycle();
             }
         },
         {
@@ -184,55 +202,9 @@ class Home extends IScene {
               this.app.next();
             }
         },
-        {
-            text: 'Nothing',
-            func: () => {
-                this.app.endCycle();
-            }
-        },
+
     ];
 }
-
-class Sell extends IScene {
-    text = <div>
-        <h3>Should I?</h3>
-        <p> You remember some of your friends love to smoke that ganja, that mary jane, that good kush, the devil's
-            lettuce. </p>
-        <p> Should you bring some to the party? </p>
-        <p> 1. Why not? </p>
-        <p> 2. Probably better not. </p>
-        <p> 3. I would never own illegal drugs! </p>
-    </div>;
-    btns = [
-        {
-            text: 'Yes',
-            func: () => {
-                this.app.changeCriminality(10);
-                this.app.changePopularity(5);
-                this.app.setState({hasWeed: true})
-                this.app.pushSceneNext(new Party(this.app));
-                this.app.next();
-            }
-        },
-        {
-            text: 'No',
-            func: () => {
-                this.app.changePopularity(-5);
-                this.app.pushSceneNext(new Party(this.app));
-                this.app.next();
-            }
-        },
-        {
-            text: 'Don\'t Have Any',
-            func: () => {
-                this.app.changePopularity(-5);
-                this.app.pushSceneNext(new Party(this.app));
-                this.app.next();
-            }
-        },
-    ];
-}
-
 class goOut extends IScene {
   text = <div>
       <h3> It's the weekend. </h3>
@@ -243,12 +215,7 @@ class goOut extends IScene {
       {
           text: 'Party',
           func: () => {
-              if(Math.random() > .7) {
-                  this.app.pushSceneNext(new Sell(this.app));
-              }
-              else {
-                  this.app.pushSceneNext(new Party(this.app));
-              }
+              this.app.pushSceneNext(new Party(this.app));
               let x = <div>
                   <h3>Time to get funky!</h3>
                   <p>
@@ -269,12 +236,8 @@ class goOut extends IScene {
           },
       },
   ];
-
 }
-
-
 class WeekEnd extends IScene {
-
     text = <div>
         <h3> It's the weekend. </h3>
         <p> On such a lovely day, how do you plan to spend it?</p>
@@ -283,7 +246,6 @@ class WeekEnd extends IScene {
         <p> 2. Stay at home and relax. </p>
         <p> What do you do?</p>
     </div>;
-
     btns = [
         {
             text: 'Go out',
@@ -295,22 +257,14 @@ class WeekEnd extends IScene {
         {
             text: 'Stay at Home',
             func: () => {
-                if(Math.random() > .4) {
-                    this.app.pushSceneNext(new Home(this.app));
-                }
-                else {
-                    this.app.pushSceneNext(new Stay(this.app));
-                }
+                this.app.pushSceneNext(new Home(this.app));
                 this.app.next();
             },
         }
     ];
-
     //check decides if the action can be displayed.
     check() {
         return this.app.days === 0;
     }
-
 }
-
 export default WeekEnd;
