@@ -156,7 +156,7 @@ class Stay extends IScene {
             func: () => {
                 let x = <div>
                     <h3>Don't Skip Leg Day</h3>
-                    <p> You have a pleasant time working out at the gym! WHo doesn't love fitness!</p>
+                    <p> You have a pleasant time working out at the gym! Who doesn't love fitness!</p>
                 </div>;
                 this.app.pushSceneNext(new Gym(this.app));
                 this.app.addText(x);
@@ -204,6 +204,46 @@ class Home extends IScene {
     ];
 }
 
+class Sell extends IScene {
+    text = <div>
+        <h3>Should I?</h3>
+        <p> You remember some of your friends love to smoke that ganja, that mary jane, that good kush, the devil's
+            lettuce. </p>
+        <p> Should you bring some to the party? </p>
+        <p> 1. Why not? </p>
+        <p> 2. Probably better not. </p>
+        <p> 3. I would never own illegal drugs! </p>
+    </div>;
+    btns = [
+        {
+            text: 'Yes',
+            func: () => {
+                this.app.changeCriminality(10);
+                this.app.changePopularity(5);
+                this.app.setState({has_weed: true})
+                this.app.pushSceneNext(new Party(this.app));
+                this.app.next();
+            }
+        },
+        {
+            text: 'No',
+            func: () => {
+                this.app.changePopularity(-5);
+                this.app.pushSceneNext(new Party(this.app));
+                this.app.next();
+            }
+        },
+        {
+            text: 'Don\'t Have Any',
+            func: () => {
+                this.app.changePopularity(-5);
+                this.app.pushSceneNext(new Party(this.app));
+                this.app.next();
+            }
+        },
+    ];
+}
+
 class goOut extends IScene {
   text = <div>
       <h3> It's the weekend. </h3>
@@ -214,7 +254,12 @@ class goOut extends IScene {
       {
           text: 'Party',
           func: () => {
-              this.app.pushSceneNext(new Party(this.app));
+              if(Math.random() > .7) {
+                  this.app.pushSceneNext(new Sell(this.app));
+              }
+              else {
+                  this.app.pushSceneNext(new Party(this.app));
+              }
               let x = <div>
                   <h3>Time to get funky!</h3>
                   <p>
@@ -238,6 +283,7 @@ class goOut extends IScene {
 
 }
 
+
 class WeekEnd extends IScene {
 
     text = <div>
@@ -253,15 +299,11 @@ class WeekEnd extends IScene {
         {
             text: 'Go out',
             func: () => {
-                this.app.pushSceneNext(new Party(this.app));
                 let x = <div>
-                    <h3>Time to get funky!</h3>
-                    <p>
-                        So you wanna go out and get your jam on! You call up
-                        some friends to find out where everyone's at tonight
-                        and put on your party clothes!
-                    </p>
+                    <h3> You decide to go out this weekend! </h3>
+                    <p> You check to see what's available this weekend.</p>
                 </div>;
+                this.app.pushSceneNext(new goOut(this.app));
                 this.app.addText(x);
                 this.app.next();
             },
@@ -269,7 +311,12 @@ class WeekEnd extends IScene {
         {
             text: 'Stay at Home',
             func: () => {
-                this.app.pushSceneNext(new Home(this.app));
+                if(Math.random() > .6) {
+                    this.app.pushSceneNext(new Home(this.app));
+                }
+                else {
+                    this.app.pushSceneNext(new Stay(this.app));
+                }
                 this.app.next();
             },
         }
