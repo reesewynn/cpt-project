@@ -7,20 +7,17 @@ import StoryBox from './StoryBox';
 import ThreadPopup from './ThreadPopup';
 import SceneLL from "./SceneLL";
 import StartScreen from "./scenes/StartScreen";
-import { WeekDay } from "./scenes/WeekDay";
+import WeekDay from "./scenes/WeekDay";
 import Continue from "./scenes/Continue";
 import WeekEnd from "./scenes/WeekEnd";
 import Win from "./scenes/Win";
 import LoseBalance from "./scenes/LoseBalance";
-import LoseCriminality from "./scenes/LoseCriminality";
 import LosePrivacy from "./scenes/LosePrivacy";
+import LoseCriminality from "./scenes/LoseCriminality";
 // import build from './FireBuilder';
 
 class App extends Component {
-  targetBalance = 0;
-
-    // finishedIntro = false;
-    //insert remaining checkpoints here:
+    targetBalance = 0;
 
     constructor(props) {
         super(props);
@@ -32,7 +29,8 @@ class App extends Component {
             popularity: 30,
             criminality: 0,
             employability: 70,
-            showPopup: true,
+            goal: 1000,
+            showPopup: true, 
             storyText: "This should never show",
             weekday: false,
             popupText: "This is a popup test",
@@ -44,6 +42,7 @@ class App extends Component {
             nextScene: {},
             knowRights: false,
             //insert remaining flags here
+            laptop_infected: false,
         };
         this.state.sceneLst.pushNext(new StartScreen(this));
     }
@@ -57,11 +56,8 @@ class App extends Component {
     }
 
     endCycle() {
-        //TODO: insert end of day here
-        console.log("ending the cycle.");
+        // console.log("ending the cycle.");
         this.setState({actionProb: Math.random()});
-        //game over logic
-        //win game!
         if(this.state.balance >= this.state.goal) {
             this.state.sceneLst.pushNext(new Win(this.app));
             this.next();
@@ -101,9 +97,7 @@ class App extends Component {
 
     next() {
         this.state.sceneLst.pop();
-        this.setState(prevState => ({
-            refreshText: !prevState.refreshText
-        }));
+        this.setState({refreshText: !this.state.refreshText});
     }
 
     addText(data) {
@@ -113,58 +107,46 @@ class App extends Component {
     }
 
     changePrivacy(amt) {
-        this.setState(prevState => ({
-            privacy: prevState.privacy + amt
-        }));
+        this.privacy += amt;
         this.maybeAnimate();
     }
 
     changeFame(amt) {
-        this.setState(prevState => ({
-            fame: prevState.fame + amt
-        }));
+        this.fame += amt;
         this.maybeAnimate();
     }
 
     changePopularity(amt) {
-        const excess = this.state.popularity + amt - 100;
-        this.setState(prevState => ({
-            popularity: Math.min(prevState.popularity + amt, 100),
-            fame: Math.max(prevState.fame, prevState.fame + excess),
-        }));
+        this.popularity += amt;
+        if (this.popularity > 100) {
+            this.fame += this.popularity - 100;
+            this.popularity = 100;
+        }
         this.maybeAnimate();
     }
 
     changeMoney(amt) {
-        this.setState(prevState => ({
-            balance: prevState.balance + amt
-        }));
+        this.targetBalance += amt;
         this.maybeAnimate();
     }
 
     changeEmployability(amt) {
-        this.setState(prevState => ({
-            employability: prevState.employability + amt
-        }));
+        this.employability += amt;
         this.maybeAnimate();
     }
 
     changeCriminality(amt) {
-        this.setState(prevState => ({
-            criminality: prevState.criminality + amt
-        }));
+        this.criminality += amt;
         this.maybeAnimate();
     }
 
     resetCriminality() {
-        this.setState({criminality: 50});
+        this.criminality = 50;
         this.maybeAnimate();
     }
 
-    addDays(daysPassed) {
-        this.setState(prevState => ({
-            days: prevState.days + daysPassed
-        }));
+    addDays(days) {
+        this.targetDays += days;
         this.maybeAnimate();
     }
 
@@ -218,11 +200,7 @@ class App extends Component {
                     <StatsBox
                         balance={App.toDollars(this.state.balance)}
                         days={this.state.days}
-                        privacy={this.state.privacy}
-                        fame={this.state.fame}
-                        popularity={this.state.popularity}
-                        criminality={this.state.criminality}
-                        employability={this.state.employability}/>
+                        privacy={this.state.privacy}/>
                     <StoryBox contents={this.state.storyText}/>
                     <ThreadPopup visible={this.state.showPopup} popupText={this.state.sceneLst.getText()}/>
                     <ActionsBox btnText={actionsText} handler={i => this.handleClick(i)}/>
