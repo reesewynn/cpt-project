@@ -265,7 +265,7 @@ class SMYTEdu extends IScene{
           text: 'Continue',
           func: () => {
               this.app.changeEmployability(2);
-              this.app.endCyle();
+              this.app.endCycle();
           },
       },
   ];
@@ -280,8 +280,7 @@ class SMYTRandom extends IScene{
       {
           text: 'Continue',
           func: () => {
-              this.app.flipRefresh();
-              this.app.endCyle();
+              this.app.endCycle();
           },
       },
   ];
@@ -319,11 +318,29 @@ class SocialMediaYT extends IScene {
     ];
 }
 
+class Surfing extends IScene {
+    text = <div>
+        <h3>Who Doesn't Like Cookies?</h3>
+        <p> You browse around online and try out some new sites. The sites have been using your cookies and selling
+            your data to databrokers! </p>
+        <p>This data is harvested and a comprehensive profile based on your browsing habits is publically
+        available!</p>
+    </div>
+    btns = [
+        {
+            text: "Continue",
+            func: () => {
+                this.app.endCycle();
+            }
+        }
+    ];
+}
+
 //leads to SocialMediaYT, SocialMediaTwitch
 class SocialMediaStart extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> You think about what kind of video mood you're in tonight, and end up deciding on: </p>
+        <p> You think about what kind of mood you're in tonight, and end up deciding on: </p>
         </div>;
     btns = [
         {
@@ -338,6 +355,15 @@ class SocialMediaStart extends IScene {
             func: () => {
                 this.app.pushSceneNext(new SocialMediaTwitch(this.app));
                 this.app.next();
+            },
+        },
+
+        {
+            text: 'Just surfing',
+            func: () => {
+              this.app.changePrivacy(-5);
+              this.app.pushSceneNext(new Surfing(this.app));
+              this.app.next();
             },
         },
     ];

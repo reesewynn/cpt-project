@@ -2,8 +2,9 @@ import IScene from '../IScene';
 import React from "react";
 import BrowseWebStart from "./BrowseWeb"
 import GamingStart from "./Gaming"
+import StudyingStart from "./Studying"
 
-class Home extends IScene {
+class PassingTime extends IScene {
 
     text = <div>
         <h3>Time to relax.</h3>
@@ -26,8 +27,9 @@ class Home extends IScene {
             }
         },
         {
-            text: 'Study/Improve Skills',
+            text: 'Watch Netflix',
             func: () => {
+                self.state.changePrivacy(-2);
                 this.app.endCycle();
             }
         },
@@ -78,10 +80,9 @@ class Party extends IScene {
                     </div>;
                     popToAdd = 5;
                 }
-                this.app.pushSceneNext(new Home(this.app));
                 this.app.addText(x);
                 this.app.changePopularity(popToAdd);
-                this.app.next();
+                this.app.endCycle();
             },
         },
         {
@@ -109,39 +110,19 @@ class Party extends IScene {
                         feel your privacy diminished.
                     </p>
                 </div>
-                this.app.pushSceneNext(new Home(this.app));
                 this.app.addText(x);
                 this.app.changePrivacy(-5);
-                this.app.next();
+                this.app.endCycle();
             },
         },
         {
             text: 'Head Home',
             func: () => {
-                this.app.pushSceneNext(new Home(this.app));
-                this.app.next();
+                this.app.endCycle();
             },
         },
     ];
 
-}
-
-class Web extends IScene {
-    text = <div>
-        <h3>Who Doesn't Like Cookies?</h3>
-        <p> You browse around online and try out some new sites. The sites have been using your cookies and selling
-            your data to databrokers! </p>
-        <p>This data is harvested and a comprehensive profile based on your browsing habits is publically
-        available!</p>
-    </div>
-    btns = [
-        {
-            text: "Contniue",
-            func: () => {
-                this.app.endCycle();
-            }
-        }
-    ];
 }
 
 class Gym extends IScene {
@@ -171,14 +152,6 @@ class Stay extends IScene {
     </div>;
     btns = [
         {
-            text: 'Browse the web!',
-            func: () => {
-                this.app.changePrivacy(-5);
-                this.app.pushSceneNext(new Web(this.app));
-                this.app.next();
-            }
-        },
-        {
             text: 'Gym',
             func: () => {
                 let x = <div>
@@ -197,6 +170,71 @@ class Stay extends IScene {
         }
     ];
 
+
+}
+
+class Home extends IScene {
+
+    text = <div>
+        <h3>Time to relax.</h3>
+        <p> You decided to be a hermit and stay at home. So what do you want to do?</p>
+    </div>;
+
+    btns = [
+        {
+            text: 'Online',
+            func: () => {
+                this.app.pushSceneNext(new PassingTime(this.app));
+                this.app.next();
+            }
+        },
+        {
+            text: 'Studying',
+            func: () => {
+              this.app.pushSceneNext(new StudyingStart(this.app));
+              this.app.next();
+            }
+        },
+        {
+            text: 'Nothing',
+            func: () => {
+                this.app.endCycle();
+            }
+        },
+    ];
+}
+
+class goOut extends IScene {
+  text = <div>
+      <h3> It's the weekend. </h3>
+      <p> You decide to get out of the house for a while. What is there to do?</p>
+  </div>;
+
+  btns = [
+      {
+          text: 'Party',
+          func: () => {
+              this.app.pushSceneNext(new Party(this.app));
+              let x = <div>
+                  <h3>Time to get funky!</h3>
+                  <p>
+                      So you wanna go out and get your jam on! You call up
+                      some friends to find out where everyone's at tonight
+                      and put on your party clothes!
+                  </p>
+              </div>;
+              this.app.addText(x);
+              this.app.next();
+          },
+      },
+      {
+          text: 'Go to the Gym',
+          func: () => {
+              this.app.pushSceneNext(new Gym(this.app));
+              this.app.next();
+          },
+      },
+  ];
 
 }
 
@@ -231,7 +269,7 @@ class WeekEnd extends IScene {
         {
             text: 'Stay at Home',
             func: () => {
-                this.app.pushSceneNext(new Stay(this.app));
+                this.app.pushSceneNext(new Home(this.app));
                 this.app.next();
             },
         }

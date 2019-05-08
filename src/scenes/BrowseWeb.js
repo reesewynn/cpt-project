@@ -15,7 +15,7 @@ class PlatformDecide extends IScene {
     btns = [
         {
             //every button needs a text field
-            text: 'Social Media',
+            text: 'Browse the Web',
             //lambda's tell the button how to behave
             func: () => {
                 this.app.pushSceneNext(new SocialMediaStart(this.app))
@@ -70,9 +70,6 @@ class LaptopBreak extends IScene {
 class BrowseWebStart extends IScene {
     text = <div>
         <p> You decide to spend the night just on your laptop. You head to the: </p>
-        <p> 1. living room. </p>
-        <p> 2. bedroom. </p>
-        <p> 3. office. </p>
     </div>;
 
     btns = [
