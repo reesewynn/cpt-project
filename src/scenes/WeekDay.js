@@ -1,5 +1,7 @@
 import IScene from '../IScene';
 import React from "react";
+import WitnessCopStop from "./WitnessCopStop";
+import CopCheckDevice from "./CopCheckDevice";
 
 class Leave extends IScene {
     text = <div>
@@ -120,7 +122,13 @@ class WeekDay extends IScene {
             //lambda's tell the button how to behave
             func: () => {
                 this.app.changeMoney(10);
-                this.app.pushSceneNext(new Work(this.app));
+                let y = Math.random();
+                if(y > .8){
+                    this.app.pushSceneNext(new CopCheckDevice(this.app));
+                }
+                else {
+                    this.app.pushSceneNext(new Work(this.app));
+                }
                 this.app.next();
             },
         },
@@ -132,13 +140,15 @@ class WeekDay extends IScene {
                 this.app.changeMoney(10);
                 let x = <div>
                     <p>Oh. But you should... </p>
-                </div>;
-                let y = <div>
                     <p>You go to work anyway.</p>
                 </div>;
-
-                this.app.pushSceneNext(new Work(this.app));
-                this.app.addText(y);
+                let y = Math.random();
+                if(y > .8){
+                    this.app.pushSceneNext(new CopCheckDevice(this.app));
+                }
+                else {
+                    this.app.pushSceneNext(new Work(this.app));
+                }
                 this.app.addText(x); //should tell them to continue
                 this.app.next();
             },
