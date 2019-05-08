@@ -7,7 +7,7 @@ import StoryBox from './StoryBox';
 import ThreadPopup from './ThreadPopup';
 import SceneLL from "./SceneLL";
 import StartScreen from "./scenes/StartScreen";
-import WeekDay from "./scenes/WeekDay";
+import { WeekDay } from "./scenes/WeekDay";
 import Continue from "./scenes/Continue";
 import WeekEnd from "./scenes/WeekEnd";
 import Win from "./scenes/Win";
@@ -17,8 +17,7 @@ import LosePrivacy from "./scenes/LosePrivacy";
 // import build from './FireBuilder';
 
 class App extends Component {
-
-    targetBalance = 0;
+  targetBalance = 0;
 
     // finishedIntro = false;
     //insert remaining checkpoints here:
@@ -33,7 +32,6 @@ class App extends Component {
             popularity: 30,
             criminality: 0,
             employability: 70,
-            goal: 1000,
             showPopup: true,
             storyText: "This should never show",
             weekday: false,
@@ -60,7 +58,7 @@ class App extends Component {
 
     endCycle() {
         //TODO: insert end of day here
-        // console.log("ending the cycle.");
+        console.log("ending the cycle."); 
         this.setState({actionProb: Math.random()});
         //game over logic
         //win game!
@@ -77,7 +75,6 @@ class App extends Component {
         else if(this.state.criminality >= 100) {
             this.state.sceneLst.pushNext(new LoseCriminality(this.app));
         }
-
         // this.setState({nextScene: this.state.nextScene.constructor(this)});
         if(this.state.weekday){
             this.addDays(5);
@@ -104,7 +101,9 @@ class App extends Component {
 
     next() {
         this.state.sceneLst.pop();
-        this.setState({refreshText: !this.state.refreshText});
+        this.setState(prevState => ({
+            refreshText: !prevState.refreshText
+        }));
     }
 
     addText(data) {
@@ -114,46 +113,58 @@ class App extends Component {
     }
 
     changePrivacy(amt) {
-        this.privacy += amt;
+        this.setState(prevState => ({
+            privacy: prevState.privacy + amt
+        }));
         this.maybeAnimate();
     }
 
     changeFame(amt) {
-        this.fame += amt;
+        this.setState(prevState => ({
+            fame: prevState.fame + amt
+        }));
         this.maybeAnimate();
     }
 
     changePopularity(amt) {
-        this.popularity += amt;
-        if (this.popularity > 100) {
-            this.fame += this.popularity - 100;
-            this.popularity = 100;
-        }
+        const excess = this.state.popularity + amt - 100;
+        this.setState(prevState => ({
+            popularity: Math.min(prevState.popularity + amt, 100),
+            fame: Math.max(prevState.fame, prevState.fame + excess),
+        }));
         this.maybeAnimate();
     }
 
     changeMoney(amt) {
-        this.targetBalance += amt;
+        this.setState(prevState => ({
+            balance: prevState.balance + amt
+        }));
         this.maybeAnimate();
     }
 
     changeEmployability(amt) {
-        this.employability += amt;
+        this.setState(prevState => ({
+            employability: prevState.employability + amt
+        }));
         this.maybeAnimate();
     }
 
     changeCriminality(amt) {
-        this.criminality += amt;
+        this.setState(prevState => ({
+            criminality: prevState.criminality + amt
+        }));
         this.maybeAnimate();
     }
 
     resetCriminality() {
-        this.criminality = 50;
+        this.setState({criminality: 50});
         this.maybeAnimate();
     }
 
-    addDays(days) {
-        this.targetDays += days;
+    addDays(daysPassed) {
+        this.setState(prevState => ({
+            days: prevState.days + daysPassed
+        }));
         this.maybeAnimate();
     }
 

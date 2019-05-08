@@ -1,6 +1,6 @@
 import IScene from '../IScene';
 import React from "react";
-// import WeekDay from "./WeekDay";
+// import { WeekDay } from "./WeekDay";
 
 class StartScreen extends IScene {
     //example of how to create display text
@@ -10,7 +10,7 @@ class StartScreen extends IScene {
             enough to buy a ticket to Privacylandia. With said ticket you can buy back the entirety of your privacy.</p>
         <p> The rules are simply to read the onscreen prompt and chose an available button below! You'll know a button
         is available when it has text and you can click on it!</p>
-        <p> To play, press the [Insert Color Here] button below...</p>
+        <p> To play, press the "Begin" button below...</p>
         </div>;
     //example of demonstrating buttons MAX 3
     btns = [
