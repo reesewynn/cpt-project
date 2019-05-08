@@ -10,6 +10,7 @@ class CopCheckDevice extends IScene {
     text = (this.evidenceFound 
         ? 
             <div>
+                <h3>This could get messy...</h3>
                 <p>
                     Incriminating evidence of alleged misdeeds are found on your 
                     device. 
@@ -17,10 +18,13 @@ class CopCheckDevice extends IScene {
                 <p>Do you hire your own lawyer for $5,000?</p>
             </div>
         : 
-            <div><p>
-                Nothing of note is found on your device, and with a little 
-                annoyance, you’re sent on your way.
-            </p></div>
+            <div>
+                <h3>You're in the clear.</h3>
+                <p>
+                    Nothing of note is found on your device, and with a little 
+                    annoyance, you’re sent on your way.
+                </p>
+            </div>
     );
     
     btns = (this.evidenceFound
@@ -29,6 +33,7 @@ class CopCheckDevice extends IScene {
                 text: 'Hire your own',
                 func: () => {
                     const x = <div>
+                        <h3>Lawyered up!</h3>
                         <p>
                             Your skillful lawyer successfully argues that the 
                             evidence against you was obtained unlawfully, and 
@@ -50,6 +55,7 @@ class CopCheckDevice extends IScene {
                 text: 'Don\'t spend the cash',
                 func: () => {
                     const x = <div>
+                        <h3>Shoulda hired your own...</h3>
                         <p>
                             Your good-for-nothing, so-called “lawyer” botches 
                             the case, and you’re sent to jail for 12 days.
