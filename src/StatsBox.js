@@ -10,7 +10,6 @@ class StatsBox extends Component {
     'fame': "Fame",
     'popularity': "Popularity",
     'criminality': "Criminality",
-    'employability': "Employability",
 
   };
 
