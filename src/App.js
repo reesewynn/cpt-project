@@ -42,7 +42,7 @@ class App extends Component {
       knowRights: false,
       //insert remaining flags here
     };
-    this.state.sceneLst.pushNext(new WitnessCopStop(this));
+    this.state.sceneLst.pushNext(new StartScreen(this));
   }
 
   handleClick(i) {

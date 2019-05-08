@@ -1,11 +1,11 @@
 import IScene from '../IScene';
 import React from 'react';
 import Work from './WeekDay';
+import EndCycleScene from './EndCycleScene';
 
 class CopCheckDevice extends IScene {
 
-    // evidenceFound = Math.random() < this.app.state.criminality * .01;
-    evidenceFound = 1;
+    evidenceFound = Math.random() < this.app.state.criminality * .01;
 
     text = (this.evidenceFound 
         ? 
@@ -41,10 +41,9 @@ class CopCheckDevice extends IScene {
                     this.app.changeMoney(-5000);
                     this.app.changeFame(10);
                     this.app.changeEmployability(-2);
-                    // this.app.pushSceneNext(new EndCycleScene(this.app));
+                    this.app.pushSceneNext(new EndCycleScene(this.app));
                     this.app.addText(x);
                     this.app.next();
-                    this.app.endCycle();
                 },
             },
             {
@@ -60,7 +59,7 @@ class CopCheckDevice extends IScene {
                     this.app.changeEmployability(-20);
                     this.app.changeFame(20);
                     // TODO: Jail time and cash penalties
-                    this.app.endCycle();
+                    this.app.pushSceneNext(new EndCycleScene(this.app));
                     this.app.addText(x);
                     this.app.next();
                 },
