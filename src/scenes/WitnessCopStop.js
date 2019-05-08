@@ -5,6 +5,7 @@ import CopCheckDevice from './CopCheckDevice';
 
 class RecordStop extends IScene {
     text = <div>
+        <h3>This'll be great for your channel...</h3>
         <p> 
             Without thinking, you reach into your pocket and pull out your phone 
             to begin taking a video of the incident. After a couple of seconds, 
@@ -103,6 +104,7 @@ class PullOver extends IScene {
             text: 'Just stare awkwardly',
             func: () => {
                 const x = <div>
+                    <h3>Gape away.</h3>
                     <p>
                         You stare awkwardly for a couple of minutes, transfixed 
                         by the scene. After a little while, you start to wonder 
@@ -130,6 +132,7 @@ class WitnessCopStop extends IScene {
             text: 'Continue driving',
             func: () => {
                 const x = <div>
+                    <h3>Back to the grindstone.</h3>
                     <p>
                         You continue on your way. The slowdown from everyone 
                         staring behind you eventually causes a traffic jam. 
