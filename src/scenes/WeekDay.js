@@ -1,6 +1,7 @@
 import IScene from '../IScene';
 import React from "react";
 import WitnessCopStop from "./WitnessCopStop";
+import CopStop from './CopStop';
 
 class Leave extends IScene {
     text = <div>
@@ -85,7 +86,7 @@ class Work extends IScene {
         {
             text: 'Do your job',
             func: () => {
-                let x = <div>
+                let txt = <div>
                     <h3> Nice work! </h3>
                     <p> 
                         Your boss notices your hard work and leaves you be for 
@@ -93,7 +94,7 @@ class Work extends IScene {
                     </p>
                 </div>
                 this.app.pushSceneNext(new Leave(this.app));
-                this.app.addText(x);
+                this.app.addText(txt);
                 this.app.next();
             }
         },
@@ -136,11 +137,11 @@ class WeekDay extends IScene {
             func: () => {
                 this.app.changeMoney(50);
                 let y = Math.random();
-                if (y > .8){
+                if (y > .8) {
                     this.app.pushSceneNext(new WitnessCopStop(this.app));
-                }
-                // TODO: chance of you getting stopped by cops (CopStop)
-                else {
+                } else if (y > .5) {
+                    this.app.pushSceneNext(new CopStop(this.app));
+                } else {
                     this.app.pushSceneNext(new Work(this.app));
                 }
                 this.app.next();
@@ -150,19 +151,19 @@ class WeekDay extends IScene {
             text: 'Skip Work',
             func: () => {
                 this.app.changeMoney(10);
-                let x = <div>
+                let txt = <div>
                     <p>Oh. But you should... </p>
                     <p>You go to work anyway.</p>
                 </div>;
                 let y = Math.random();
-                if (y > .8){
+                if (y > .8) {
                     this.app.pushSceneNext(new WitnessCopStop(this.app));
-                }
-                // TODO: chance of you getting stopped by cops (CopStop)
-                else {
+                } else if (y > .5) {
+                    this.app.pushSceneNext(new CopStop(this.app));
+                } else {
                     this.app.pushSceneNext(new Work(this.app));
                 }
-                this.app.addText(x); 
+                this.app.addText(txt); 
                 this.app.next();
             },
         }
