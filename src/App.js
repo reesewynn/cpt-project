@@ -29,7 +29,7 @@ class App extends Component {
             popularity: 30,
             criminality: 0,
             employability: 70,
-            goal: 1000,
+            goal: 10000,
             showPopup: true,
             storyText: "This should never show",
             weekday: false,

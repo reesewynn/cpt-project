@@ -134,7 +134,7 @@ class WeekDay extends IScene {
         {
             text: 'Work',
             func: () => {
-                this.app.changeMoney(10);
+                this.app.changeMoney(50);
                 let y = Math.random();
                 if (y > .8){
                     this.app.pushSceneNext(new WitnessCopStop(this.app));

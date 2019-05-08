@@ -170,7 +170,7 @@ class Stay extends IScene {
                     <h3>Don't Skip Leg Day</h3>
                     <p> You have a pleasant time working out at the gym! WHo doesn't love fitness!</p>
                 </div>;
-                this.app.pushSceneNext(new Gym(this.app));
+                this.   app.pushSceneNext(new Gym(this.app));
                 this.app.addText(x);
                 this.app.next();
             }
