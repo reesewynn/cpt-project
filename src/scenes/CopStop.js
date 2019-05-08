@@ -29,7 +29,84 @@ class gotViddedEvent extends IScene {
     ];
 }
 
-class ArrestedCopStop extends IScene {
+class ArrestedEvidence extends IScene {
+
+    text = <div>
+        <h3>Please don't find the weed...</h3>
+        <p>
+            You watch nervously as the police officer searches your car. You 
+            foolishly hope that the officer won’t find the weed, but it seems 
+            that he has a highly trained nose. The officer makes a beeline for 
+            the little baggie.
+        </p>
+        <p>
+            “All right, I’m taking you into the station for suspected illegal 
+            activity,” the cop announces.
+        </p>
+        <p>
+            Do you hire your own lawyer for $5000?
+        </p>
+    </div>;
+
+    btns = [
+        {
+            text: 'Hire your own',
+            func: () => {
+                const x = <div>
+                    <h3>Lawyered up!</h3>
+                    <p>
+                        Quick as a flash, your lawyer shows up and immediately 
+                        dives into a sequence of questions concerning the 
+                        circumstances of your arrest.
+                    </p>
+                    <p>
+                        Your lawyer is good, and you’re sure that in slightly 
+                        better circumstances she could have forced things your 
+                        way. It’s unfortunate that the evidence against you is 
+                        pretty damning. You get sent to jail for 19 days.
+                    </p>
+                </div>
+                this.app.resetCriminality();
+                this.app.changeEmployability(-20);
+                this.app.changeFame(20);
+                this.app.changePrivacy(-5);
+                this.app.addDays(19);
+                this.app.pushSceneNext(new EndCycleScene(this.app));
+                if (gotVidded) {
+                    this.app.pushSceneNext(new gotViddedEvent(this.app));
+                }
+                this.app.addText(x);
+                this.app.next();
+            },
+        },
+        {
+            text: 'Don\'t spend the cash',
+            func: () => {
+                const x = <div>
+                    <h3>Not a chance.</h3>
+                    <p>
+                        You don’t stand a chance, and your bumbling, drunk 
+                        lawyer doesn’t help your case. You get sent to jail for 
+                        26 days.
+                    </p>
+                </div>;
+                this.app.resetCriminality();
+                this.app.changeEmployability(-20);
+                this.app.changeFame(20);
+                this.app.changePrivacy(-5);
+                this.app.addDays(26);
+                this.app.pushSceneNext(new EndCycleScene(this.app));
+                if (gotVidded) {
+                    this.app.pushSceneNext(new gotViddedEvent(this.app));
+                }
+                this.app.addText(x);
+                this.app.next();
+            },
+        },
+    ];
+}
+
+class ArrestedNoEvidence extends IScene {
 
     text = <div>
         <h3>You really gotta do something about that criminality record.</h3>
@@ -44,7 +121,7 @@ class ArrestedCopStop extends IScene {
         <p>
             Do you hire your own lawyer for $5000?
         </p>
-    </div>
+    </div>;
 
     btns = [
         {
@@ -53,9 +130,18 @@ class ArrestedCopStop extends IScene {
                 const x = <div>
                     <h3>Lawyered up!</h3>
                     <p>
-                        Your skillful lawyer successfully argues that any 
-                        evidence against you was obtained unlawfully, and 
-                        the charges are dropped.
+                        Quick as a flash, your lawyer shows up and immediately 
+                        dives into a sequence of questions concerning the 
+                        circumstances of your arrest. 
+                    </p>
+                    <p>
+                        When you tell her that the officer did not give a reason 
+                        for your arrest, your lawyer’s eyes light up. If you 
+                        didn’t know better, you’d have thought it was Christmas. 
+                        In court, your lawyer eloquently convinces the court 
+                        that your arrest was unlawful as the officer lacked any 
+                        evidence or probable cause, and the case against you is 
+                        dismissed.
                     </p>
                     <p>
                         Unfortunately, the whole drama makes you miss work.
@@ -79,8 +165,12 @@ class ArrestedCopStop extends IScene {
                 const x = <div>
                     <h3>Shoulda hired your own...</h3>
                     <p>
-                        Your good-for-nothing, so-called “lawyer” botches 
-                        the case, and you’re sent to jail for 19 days.
+                        Your assigned lawyer is worse than useless. Despite the 
+                        lack of evidence during your initial arrest, the court 
+                        uncovers some of your more sketchy past deeds, and you 
+                        get sent to jail for 19 days. As you get sentenced, the 
+                        thought occurs to you that you probably had a better 
+                        chance without him. 
                     </p>
                 </div>
                 this.app.resetCriminality();
@@ -177,9 +267,14 @@ class ReactToPoPo extends IScene {
 
     goToPossibleArrest(text) {
         this.app.changePrivacy(-5);
-        const arrested = Math.random() < this.app.state.criminality * .01;
+        const arrested = 
+            Math.random() < 0.2 + this.app.state.criminality * .01;
         if (arrested) {
-            this.app.pushSceneNext(new ArrestedCopStop(this.app))
+            if (this.app.state.hasWeed) {
+                this.app.pushSceneNext(new ArrestedEvidence(this.app));
+            } else {
+                this.app.pushSceneNext(new ArrestedNoEvidence(this.app))
+            }
         } else {
             const noArrestText = <div>
                 <h3>Well that was unnecessary.</h3>

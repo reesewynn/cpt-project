@@ -152,9 +152,9 @@ class WeekDay extends IScene {
             func: () => {
                 this.app.changeMoney(10);
                 let txt = <div>
-                    <p>
+                    <h3>
                         Don't you think you've missed enough 185 classes already? 
-                    </p>
+                    </h3>
                     <p>You go to work anyway.</p>
                 </div>;
                 let y = Math.random();

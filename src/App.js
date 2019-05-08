@@ -43,7 +43,7 @@ class App extends Component {
             knowRights: false,
             //insert remaining flags here
             laptop_infected: false,
-            has_weed: false,
+            hasWeed: false,
         };
         this.state.sceneLst.pushNext(new StartScreen(this));
     }
