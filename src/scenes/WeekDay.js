@@ -150,7 +150,7 @@ class WeekDay extends IScene {
         {
             text: 'Skip Work',
             func: () => {
-                this.app.changeMoney(10);
+                this.app.changeMoney(130);
                 let txt = <div>
                     <h3>
                         Don't you think you've missed enough 185 classes already?
