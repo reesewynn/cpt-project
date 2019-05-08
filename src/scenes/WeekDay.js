@@ -119,7 +119,7 @@ class WeekDay extends IScene {
             text: 'Work',
             //lambda's tell the button how to behave
             func: () => {
-                this.app.addMoney(10);
+                this.app.changeMoney(10);
                 this.app.pushSceneNext(new Work(this.app));
                 this.app.next();
             },
@@ -129,7 +129,7 @@ class WeekDay extends IScene {
             text: 'Skip Work',
             //lambda's tell the button how to behave
             func: () => {
-                this.app.addMoney(10);
+                this.app.changeMoney(10);
                 let x = <div>
                     <p>Oh. But you should... </p>
                 </div>;
