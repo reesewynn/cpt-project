@@ -8,6 +8,8 @@ class StartScreen extends IScene {
         <h3> Welcome To [Insert Title Here]! </h3>
         <p> In [Insert Title Here], you play as an individual with a dark past. You have only one goal. To earn up
             enough to buy a ticket to Privacylandia. With said ticket you can buy back the entirety of your privacy.</p>
+        <p> The rules are simply to read the onscreen prompt and chose an available button below! You'll know a button
+        is available when it has text and you can click on it!</p>
         <p> To play, press the [Insert Color Here] button below...</p>
         </div>;
     //example of demonstrating buttons MAX 3

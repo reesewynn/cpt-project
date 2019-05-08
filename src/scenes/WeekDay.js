@@ -138,7 +138,7 @@ class WeekDay extends IScene {
                 this.app.changeMoney(10);
                 let y = Math.random();
                 if(y > .8){
-                    this.app.pushSceneNext(new CopCheckDevice(this.app));
+                    this.app.pushSceneNext(new WitnessCopStop(this.app));
                 }
                 else {
                     this.app.pushSceneNext(new Work(this.app));
