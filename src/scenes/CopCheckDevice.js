@@ -4,7 +4,8 @@ import Work from './WeekDay';
 
 class CopCheckDevice extends IScene {
 
-    evidenceFound = Math.random() < this.app.state.criminality * .01;
+    // evidenceFound = Math.random() < this.app.state.criminality * .01;
+    evidenceFound = 1;
 
     text = (this.evidenceFound 
         ? 
@@ -30,15 +31,20 @@ class CopCheckDevice extends IScene {
                     const x = <div>
                         <p>
                             Your skillful lawyer successfully argues that the 
-                            evidence against you was obtained unlawfully, and the 
-                            charges are dropped.
+                            evidence against you was obtained unlawfully, and 
+                            the charges are dropped.
+                        </p>
+                        <p>
+                            Unfortunately, the whole drama makes you miss work.
                         </p>
                     </div>
                     this.app.changeMoney(-5000);
                     this.app.changeFame(10);
-                    // TODO: If workday, miss work
+                    this.app.changeEmployability(-2);
+                    // this.app.pushSceneNext(new EndCycleScene(this.app));
                     this.app.addText(x);
                     this.app.next();
+                    this.app.endCycle();
                 },
             },
             {
@@ -46,8 +52,8 @@ class CopCheckDevice extends IScene {
                 func: () => {
                     const x = <div>
                         <p>
-                            Your good-for-nothing, so-called “lawyer” botches the 
-                            case, and you’re sent to jail. 
+                            Your good-for-nothing, so-called “lawyer” botches 
+                            the case, and you’re sent to jail. 
                         </p>
                     </div>
                     this.app.resetCriminality();
@@ -63,12 +69,8 @@ class CopCheckDevice extends IScene {
             {
                 text: 'Continue',
                 func: () => {
-                    // If workday, go to work. Otherwise, continue cycle?
-                    if (this.app.state.weekday) {
-                        this.app.pushSceneNext(new Work(this.app));
-                        this.app.next();
-                    } 
-                    // TODO: use weekend counter to determine next scene
+                    this.app.pushSceneNext(new Work(this.app));
+                    this.app.next();
                 },
             },
         ]

@@ -55,6 +55,7 @@ class App extends Component {
 
   endCycle() {
     //TODO: insert end of day here
+    console.log("ending the cycle.");
     this.setState({actionProb: Math.random()});
     // this.setState({nextScene: this.state.nextScene.constructor(this)});
     if(this.state.weekday){
