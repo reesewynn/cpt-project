@@ -14,7 +14,6 @@ class GamingNormal extends IScene {
                 this.app.changeFame(2);
                 this.app.changeMoney(50 * this.app.state.fame * .1);
                 this.app.changePrivacy(-2);
-                this.app.next();
                 this.app.endCycle();
             },
         },
