@@ -10,6 +10,7 @@ import StartScreen from "./scenes/StartScreen";
 import WeekDay from "./scenes/WeekDay";
 import Continue from "./scenes/Continue";
 import WeekEnd from "./scenes/WeekEnd";
+import WitnessCopStop from './scenes/WitnessCopStop';
 // import build from './FireBuilder';
 
 class App extends Component {
@@ -24,8 +25,10 @@ class App extends Component {
     this.state = {
       balance: 0,
       days: 0,
-      privacy: 0,
+      privacy: 100,
+      fame: 0,
       criminality: 0,
+      employability: 70,
       showPopup: true,
       storyText: "This should never show",
       weekday: false,
@@ -35,9 +38,11 @@ class App extends Component {
       sceneLst: new SceneLL(),
       // nextScene: {},
       askedPass: false,
+      nextScene: {},
+      knowRights: false,
       //insert remaining flags here
     };
-    this.state.sceneLst.pushNext(new StartScreen(this));
+    this.state.sceneLst.pushNext(new WitnessCopStop(this));
   }
 
   handleClick(i) {
@@ -86,13 +91,33 @@ class App extends Component {
     this.state.sceneLst.pushNext(x);
   }
 
-  addMoney(b) {
-    this.targetBalance += b;
+  changeFame(amt) {
+    this.fame += amt;
     this.maybeAnimate();
   }
 
-  addDays(d) {
-    this.targetDays += d;
+  changeMoney(amt) {
+    this.targetBalance += amt;
+    this.maybeAnimate();
+  }
+
+  changeEmployability(amt) {
+    this.employability += amt;
+    this.maybeAnimate();
+  }
+
+  changeCriminality(amt) {
+    this.criminality += amt;
+    this.maybeAnimate();
+  }
+
+  resetCriminality() {
+    this.criminality = 50;
+    this.maybeAnimate();
+  }
+
+  addDays(days) {
+    this.targetDays += days;
     this.maybeAnimate();
   }
 
