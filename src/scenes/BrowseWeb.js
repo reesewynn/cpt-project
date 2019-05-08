@@ -10,7 +10,7 @@ class PlatformDecide extends IScene {
     //example of how to crate display text
     text = <div>
         <p> You settle down and open you open your laptop.
-        You decide to spend the night on: </p>
+        What do you want to do? </p>
         </div>;
     btns = [
         {
@@ -18,7 +18,7 @@ class PlatformDecide extends IScene {
             text: 'Social Media',
             //lambda's tell the button how to behave
             func: () => {
-                // this.app.pushSceneNext(new SocialMediaStart(this.app))
+                this.app.pushSceneNext(new SocialMediaStart(this.app))
                 this.app.next();
             },
         },
@@ -27,7 +27,7 @@ class PlatformDecide extends IScene {
             text: 'Random Reading',
             //lambda's tell the button how to behave
             func: () => {
-                // this.app.pushSceneNext(new RandomReadingStart(this.app))
+                this.app.pushSceneNext(new RandomReadingStart(this.app))
                 this.app.next();
             },
         },
@@ -36,7 +36,7 @@ class PlatformDecide extends IScene {
             text: 'Porn',
             //lambda's tell the button how to behave
             func: () => {
-                // this.app.pushSceneNext(new BrowsePornStart(this.app))
+                this.app.pushSceneNext(new BrowsePornStart(this.app))
                 this.app.next();
             },
         },

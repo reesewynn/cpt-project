@@ -104,7 +104,7 @@ class GeekSquadBuyNew extends IScene {
             text: 'Buy for $1000',
             //lambda's tell the button how to behave
             func: () => {
-                  this.app.updateBalance(-1000);
+                  this.app.changeMoney(-1000);
                   this.app.pushSceneNext(new GeekSquadLeave(this.app))
                   this.app.next();
             },
