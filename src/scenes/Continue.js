@@ -1,6 +1,5 @@
 import IScene from '../IScene';
 // import React from "react";
-// import WeekDay from "./WeekDay";
 
 class Continue extends IScene {
     //example of how to create display text

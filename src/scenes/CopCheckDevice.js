@@ -1,6 +1,6 @@
 import IScene from '../IScene';
 import React from 'react';
-import Work from './WeekDay';
+import { Work } from './WeekDay';
 import EndCycleScene from './EndCycleScene';
 
 class CopCheckDevice extends IScene {
@@ -46,6 +46,7 @@ class CopCheckDevice extends IScene {
                     this.app.changeMoney(-5000);
                     this.app.changeFame(10);
                     this.app.changeEmployability(-2);
+                    this.app.changePrivacy(-5);
                     this.app.pushSceneNext(new EndCycleScene(this.app));
                     this.app.addText(x);
                     this.app.next();
@@ -64,6 +65,7 @@ class CopCheckDevice extends IScene {
                     this.app.resetCriminality();
                     this.app.changeEmployability(-20);
                     this.app.changeFame(20);
+                    this.app.changePrivacy(-5);
                     this.app.addDays(12);
                     this.app.pushSceneNext(new EndCycleScene(this.app));
                     this.app.addText(x);
@@ -74,6 +76,7 @@ class CopCheckDevice extends IScene {
             {
                 text: 'Continue',
                 func: () => {
+                    this.app.changePrivacy(-5);
                     this.app.pushSceneNext(new Work(this.app));
                     this.app.next();
                 },

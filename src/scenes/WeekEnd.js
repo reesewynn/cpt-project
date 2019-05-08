@@ -114,7 +114,7 @@ class Party extends IScene {
 class WeekEnd extends IScene {
 
     text = <div>
-        <h3> What a wonderful day off! </h3>
+        <h3> It's the weekend. </h3>
         <p> On such a lovely day, how do you plan to spend it?</p>
         <p> You've a few options: </p>
         <p> 1. Go out and party! </p>
