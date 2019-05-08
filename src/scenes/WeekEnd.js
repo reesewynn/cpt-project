@@ -183,7 +183,7 @@ class Stay extends IScene {
             func: () => {
                 let x = <div>
                     <h3>Don't Skip Leg Day</h3>
-                    <p> You have a pleasant time working out at the gym! WHo doesn't love fitness!</p>
+                    <p> You have a pleasant time working out at the gym! Who doesn't love fitness?</p>
                 </div>;
                 this.app.pushSceneNext(new Gym(this.app));
                 this.app.addText(x);

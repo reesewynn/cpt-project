@@ -92,6 +92,7 @@ class ArrestedCopStop extends IScene {
 class ReactToPoPo extends IScene {
 
     text = <div>
+        <h3>Get out!</h3>
         <p>
             “Get out of the car, turn around, and put your hands on the hood!” 
         </p>
@@ -109,6 +110,7 @@ class ReactToPoPo extends IScene {
                 const text = (getsVideod 
                     ? 
                         <div>
+                            <h3>Move your bloomin' arse!</h3>
                             <p>
                                 “Get out!” The officer yells, opening the door 
                                 and yanking you out of the car before shoving 
@@ -121,6 +123,7 @@ class ReactToPoPo extends IScene {
                         </div>
                     :
                     <div>
+                            <h3>Move your bloomin' arse!</h3>
                             <p>
                                 “Get out!” The officer yells, opening the door 
                                 and yanking you out of the car before shoving 
@@ -141,6 +144,7 @@ class ReactToPoPo extends IScene {
                 const text = (getsVideod 
                     ? 
                         <div>
+                            <h3>Okay, I'm going!</h3>
                             <p>
                                 As you move to obey, the officer grabs you 
                                 roughly and pushes you against the side of the 
@@ -153,6 +157,7 @@ class ReactToPoPo extends IScene {
                         </div>
                     :
                         <div>
+                            <h3>Okay, I'm going!</h3>
                             <p>
                                 As you move to obey, the officer grabs you 
                                 roughly and pushes you against the side of the 
@@ -172,6 +177,7 @@ class ReactToPoPo extends IScene {
             this.app.pushSceneNext(new ArrestedCopStop(this.app))
         } else {
             const noArrestText = <div>
+                <h3>Well that was unnecessary.</h3>
                 <p>
                     After patting you down and searching your car, the cop hands 
                     you back your license and papers. 
