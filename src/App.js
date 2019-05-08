@@ -30,7 +30,7 @@ class App extends Component {
             criminality: 0,
             employability: 70,
             goal: 1000,
-            showPopup: true, 
+            showPopup: true,
             storyText: "This should never show",
             weekday: false,
             popupText: "This is a popup test",
@@ -200,7 +200,10 @@ class App extends Component {
                     <StatsBox
                         balance={App.toDollars(this.state.balance)}
                         days={this.state.days}
-                        privacy={this.state.privacy}/>
+                        privacy={this.state.privacy}
+                        fame={this.state.fame}
+                        popularity={this.state.popularity}
+                        criminality={this.state.criminality}/>
                     <StoryBox contents={this.state.storyText}/>
                     <ThreadPopup visible={this.state.showPopup} popupText={this.state.sceneLst.getText()}/>
                     <ActionsBox btnText={actionsText} handler={i => this.handleClick(i)}/>
