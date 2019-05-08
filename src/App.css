@@ -32,6 +32,7 @@
 .actions-box {
   grid-area: op;
   /*border: 3px solid blue;*/
+
   padding: 5px;
 }
 
@@ -96,27 +97,35 @@
 
 .stat-label {
   margin-top: 0px;
-  padding: 3px;
+  padding: 6px;
   margin-bottom: 15px;
   border-bottom: 1px solid black;
   padding-left: 2px;
-  background-color: #2980b9;
+  background-color: #3C3F41;
+  color: white;
 }
+
+/*.stat-label h3{*/
+/*  color: white;*/
+/*}*/
 
 .stat-value {
   padding-left: .4em;
 }
 
 #btn0 {
-  background-color: limegreen;
+  background-color: #3C3F41;
+  border-radius: 3px;
 }
 
 #btn1 {
-  background-color: indianred;
+  background-color: #3C3F41;
+  border-radius: 3px;
 }
 
 #btn2 {
-  background-color: cornflowerblue;
+  background-color: #3C3F41;
+  border-radius: 3px;
 }
 
 .thread-popup-wrapper {

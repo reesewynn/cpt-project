@@ -2,6 +2,8 @@ import IScene from '../IScene';
 import React from "react";
 import BrowseWebStart from "./BrowseWeb"
 import GamingStart from "./Gaming"
+import StudyingStart from "./Studying"
+import EndCycleScene from './EndCycleScene';
 
 class PassingTime extends IScene {
 
@@ -79,9 +81,10 @@ class Party extends IScene {
                     </div>;
                     popToAdd = 5;
                 }
-                this.app.addText(x);
                 this.app.changePopularity(popToAdd);
-                this.app.endCycle();
+                this.app.pushSceneNext(new EndCycleScene(this.app));
+                this.app.addText(x);
+                this.app.next();
             },
         },
         {
@@ -108,10 +111,11 @@ class Party extends IScene {
                         You snatch your phone up, but the damage is done. You
                         feel your privacy diminished.
                     </p>
-                </div>
+                </div>;
+                this.app.pushSceneNext(new EndCycleScene(this.app));
                 this.app.addText(x);
                 this.app.changePrivacy(-5);
-                this.app.endCycle();
+                this.app.next();
             },
         },
         {
@@ -130,7 +134,8 @@ class Gym extends IScene {
         <p> Someone at the gym with you recorded you working out and really struggling to bench! Do you even lift, bro?
         </p>
         <p> They posted it online and because you live in a one-party consent state, you have no recourse!</p>
-    </div>
+    </div>;
+
     btns = [
         {
           text: "Continue",
@@ -188,6 +193,46 @@ class Home extends IScene {
     ];
 }
 
+class Sell extends IScene {
+    text = <div>
+        <h3>Should I?</h3>
+        <p> You remember some of your friends love to smoke that ganja, that mary jane, that good kush, the devil's
+            lettuce. </p>
+        <p> Should you bring some to the party? </p>
+        <p> 1. Why not? </p>
+        <p> 2. Probably better not. </p>
+        <p> 3. I would never own illegal drugs! </p>
+    </div>;
+    btns = [
+        {
+            text: 'Yes',
+            func: () => {
+                this.app.changeCriminality(10);
+                this.app.changePopularity(5);
+                this.app.setState({hasWeed: true})
+                this.app.pushSceneNext(new Party(this.app));
+                this.app.next();
+            }
+        },
+        {
+            text: 'No',
+            func: () => {
+                this.app.changePopularity(-5);
+                this.app.pushSceneNext(new Party(this.app));
+                this.app.next();
+            }
+        },
+        {
+            text: 'Don\'t Have Any',
+            func: () => {
+                this.app.changePopularity(-5);
+                this.app.pushSceneNext(new Party(this.app));
+                this.app.next();
+            }
+        },
+    ];
+}
+
 class goOut extends IScene {
   text = <div>
       <h3> It's the weekend. </h3>
@@ -198,7 +243,12 @@ class goOut extends IScene {
       {
           text: 'Party',
           func: () => {
-              this.app.pushSceneNext(new Party(this.app));
+              if(Math.random() > .7) {
+                  this.app.pushSceneNext(new Sell(this.app));
+              }
+              else {
+                  this.app.pushSceneNext(new Party(this.app));
+              }
               let x = <div>
                   <h3>Time to get funky!</h3>
                   <p>
@@ -222,6 +272,7 @@ class goOut extends IScene {
 
 }
 
+
 class WeekEnd extends IScene {
 
     text = <div>
@@ -244,7 +295,12 @@ class WeekEnd extends IScene {
         {
             text: 'Stay at Home',
             func: () => {
-                this.app.pushSceneNext(new Home(this.app));
+                if(Math.random() > .4) {
+                    this.app.pushSceneNext(new Home(this.app));
+                }
+                else {
+                    this.app.pushSceneNext(new Stay(this.app));
+                }
                 this.app.next();
             },
         }

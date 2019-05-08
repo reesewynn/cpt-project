@@ -93,7 +93,7 @@ class GamingSwatted extends IScene {
             text: 'Continue',
             func: () => {
                 this.app.changePrivacy(-2);
-                if (this.app.state.has_weed) {
+                if (this.app.state.hasWeed) {
                     this.app.pushSceneNext(new GamingSwatPoss(this.app));
                 } else {
                     this.app.pushSceneNext(new GamingSwatAfter(this.app));
