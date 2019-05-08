@@ -2,6 +2,7 @@ import IScene from '../IScene';
 import React from "react";
 import BrowseWebStart from "./BrowseWeb"
 import GamingStart from "./Gaming"
+import EndCycleScene from "./EndCycleScene";
 
 class NetflixEx extends IScene {
     text = <div>
@@ -80,7 +81,7 @@ class Party extends IScene {
         {
             text: 'Grab The Aux',
             func: () => {
-                var x = <div>
+                let x = <div>
                     <h3> Well... that happened. </h3>
                     <p>
                         You gave it your all, but unfortunately the crowd didn't
@@ -89,7 +90,7 @@ class Party extends IScene {
                         Road and posted it online!
                     </p>
                 </div>;
-                var popToAdd = -5;
+                let popToAdd = -5;
                 if (Math.random() < this.app.state.popularity * .01) {
                     x = <div>
                         <h3> Great work! </h3>
@@ -101,9 +102,10 @@ class Party extends IScene {
                     </div>;
                     popToAdd = 5;
                 }
-                this.app.addText(x);
                 this.app.changePopularity(popToAdd);
-                this.app.endCycle();
+                this.app.pushSceneNext(new EndCycleScene(this.app));
+                this.app.addText(x);
+                this.app.next();
             },
         },
         {
@@ -131,9 +133,10 @@ class Party extends IScene {
                         feel your privacy diminished.
                     </p>
                 </div>
-                this.app.addText(x);
                 this.app.changePrivacy(-5);
-                this.app.endCycle();
+                this.app.pushSceneNext(new EndCycleScene(this.app));
+                this.app.addText(x);
+                this.app.next();
             },
         },
         {
