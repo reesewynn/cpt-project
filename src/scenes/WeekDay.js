@@ -42,7 +42,7 @@ class AskData extends IScene {
                     </p>
                     <p> You feel your privacy decrease.</p>
                 </div>;
-                //TODO: this.app.addPrivacy(-10);
+                this.app.changePrivacy(-10);
                 this.app.pushSceneNext(new Leave(this.app));
                 this.app.addText(x);
                 this.app.next();
@@ -65,9 +65,9 @@ class AskData extends IScene {
                         situation will reward you somewhat and your cleverness 
                         tells you to only give up some of your accounts.
                     </p>
-                    <p> Your privacy decreases a little less.</p>
+                    <p> Your privacy decreases a little.</p>
                 </div>
-                //TODO: this.app.addPrivacy(-5);
+                this.app.changePrivacy(-5);
                 this.app.pushSceneNext(new Leave(this.app));
                 this.app.addText(x);
                 this.app.next();
@@ -111,9 +111,9 @@ class Work extends IScene {
                 this.app.next();
             }
         },
-        {
-            text: 'Quit'
-        }
+        // {
+        //     text: 'Quit',
+        // }
     ]
 }
 
@@ -136,9 +136,10 @@ class WeekDay extends IScene {
             func: () => {
                 this.app.changeMoney(10);
                 let y = Math.random();
-                if(y > .8){
+                if (y > .8){
                     this.app.pushSceneNext(new WitnessCopStop(this.app));
                 }
+                // TODO: chance of you getting stopped by cops (CopStop)
                 else {
                     this.app.pushSceneNext(new Work(this.app));
                 }
@@ -154,13 +155,14 @@ class WeekDay extends IScene {
                     <p>You go to work anyway.</p>
                 </div>;
                 let y = Math.random();
-                if(y > .8){
+                if (y > .8){
                     this.app.pushSceneNext(new WitnessCopStop(this.app));
                 }
+                // TODO: chance of you getting stopped by cops (CopStop)
                 else {
                     this.app.pushSceneNext(new Work(this.app));
                 }
-                this.app.addText(x); //should tell them to continue
+                this.app.addText(x); 
                 this.app.next();
             },
         }
