@@ -7,7 +7,7 @@ import StoryBox from './StoryBox';
 import ThreadPopup from './ThreadPopup';
 import SceneLL from "./SceneLL";
 import StartScreen from "./scenes/StartScreen";
-import WeekDay from "./scenes/WeekDay";
+import { WeekDay } from "./scenes/WeekDay";
 import Continue from "./scenes/Continue";
 import WeekEnd from "./scenes/WeekEnd";
 // import build from './FireBuilder';

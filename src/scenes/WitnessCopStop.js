@@ -1,6 +1,6 @@
 import IScene from '../IScene';
 import React from 'react';
-import Work from './WeekDay';
+import { Work } from './WeekDay';
 import CopCheckDevice from './CopCheckDevice';
 
 class RecordStop extends IScene {

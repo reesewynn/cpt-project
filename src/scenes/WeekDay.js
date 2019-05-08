@@ -1,7 +1,6 @@
 import IScene from '../IScene';
 import React from "react";
 import WitnessCopStop from "./WitnessCopStop";
-import CopCheckDevice from "./CopCheckDevice";
 
 class Leave extends IScene {
     text = <div>
@@ -138,7 +137,7 @@ class WeekDay extends IScene {
                 this.app.changeMoney(10);
                 let y = Math.random();
                 if(y > .8){
-                    this.app.pushSceneNext(new CopCheckDevice(this.app));
+                    this.app.pushSceneNext(new WitnessCopStop(this.app));
                 }
                 else {
                     this.app.pushSceneNext(new Work(this.app));
@@ -156,7 +155,7 @@ class WeekDay extends IScene {
                 </div>;
                 let y = Math.random();
                 if(y > .8){
-                    this.app.pushSceneNext(new CopCheckDevice(this.app));
+                    this.app.pushSceneNext(new WitnessCopStop(this.app));
                 }
                 else {
                     this.app.pushSceneNext(new Work(this.app));
@@ -174,4 +173,4 @@ class WeekDay extends IScene {
     }
 }
 
-export default WeekDay;
+export { WeekDay, Work };
