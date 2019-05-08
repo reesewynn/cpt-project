@@ -22,7 +22,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            balance: 0,
+            balance: 100,
             days: 0,
             privacy: 100,
             fame: 0,
