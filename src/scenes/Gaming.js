@@ -12,7 +12,7 @@ class GamingNormal extends IScene {
             text: 'Continue',
             func: () => {
                 this.app.changeFame(2);
-                this.app.changeMoney(1000);
+                this.app.changeMoney(100);
                 this.app.changePrivacy(-2);
                 this.app.next();
                 this.app.endCycle();
@@ -33,7 +33,7 @@ class GamingSwatAfter extends IScene {
             func: () => {
                 this.app.changePrivacy(-2);
                 this.app.changeFame(5);
-                this.app.changeMoney(2000);
+                this.app.changeMoney(200);
                 this.app.endCycle();
             },
         },

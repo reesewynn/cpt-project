@@ -23,8 +23,8 @@ class AskData extends IScene {
     text = <div>
         <h3> Uh Oh </h3>
         <p> Your boss sees you on Reddit and isn't mad, just disappointed. </p>
-        <p> 
-            Afraid of how you represent the company online, your boss asks 
+        <p>
+            Afraid of how you represent the company online, your boss asks
             you for your social media passwords.
         </p>
         <p> You have some options: </p>
@@ -37,8 +37,8 @@ class AskData extends IScene {
             func: () => {
                 let x = <div>
                     <h3> What could go wrong? </h3>
-                    <p> 
-                        You doubt they'll actually bother using them, so you 
+                    <p>
+                        You doubt they'll actually bother using them, so you
                         write down your passwords and hope for the best.
                     </p>
                     <p> You feel your privacy decrease.</p>
@@ -54,16 +54,16 @@ class AskData extends IScene {
             func: () => {
                 let x = <div>
                     <h3> That's A No From Me, Chief. </h3>
-                    <p> 
-                        You start to tell them no and quickly remember that 
-                        there is no clear concise legal argument to deny them 
-                        access and they could fire you pretty easily. You need 
-                        this job and a court case would ruin all chances of 
+                    <p>
+                        You start to tell them no and quickly remember that
+                        there is no clear concise legal argument to deny them
+                        access and they could fire you pretty easily. You need
+                        this job and a court case would ruin all chances of
                         keeping your privacy intact.
                     </p>
-                    <p> 
-                        But your knowledge of the legal grayness of the 
-                        situation will reward you somewhat and your cleverness 
+                    <p>
+                        But your knowledge of the legal grayness of the
+                        situation will reward you somewhat and your cleverness
                         tells you to only give up some of your accounts.
                     </p>
                     <p> Your privacy decreases a little.</p>
@@ -88,8 +88,8 @@ class Work extends IScene {
             func: () => {
                 let txt = <div>
                     <h3> Nice work! </h3>
-                    <p> 
-                        Your boss notices your hard work and leaves you be for 
+                    <p>
+                        Your boss notices your hard work and leaves you be for
                         the day.
                     </p>
                 </div>
@@ -121,8 +121,8 @@ class Work extends IScene {
 class WeekDay extends IScene {
     text = <div>
         <h3> It's A Bright New Day! </h3>
-        <p> 
-            It's a beautiful day outside. Birds are singing. Flowers are 
+        <p>
+            It's a beautiful day outside. Birds are singing. Flowers are
             blooming. And all these fools are trying to steal your privacy!
         </p>
         <p> You've a few options: </p>
@@ -135,7 +135,7 @@ class WeekDay extends IScene {
         {
             text: 'Work',
             func: () => {
-                this.app.changeMoney(50);
+                this.app.changeMoney(150);
                 let y = Math.random();
                 if (y > .7) {
                     this.app.pushSceneNext(new WitnessCopStop(this.app));
@@ -153,7 +153,7 @@ class WeekDay extends IScene {
                 this.app.changeMoney(10);
                 let txt = <div>
                     <h3>
-                        Don't you think you've missed enough 185 classes already? 
+                        Don't you think you've missed enough 185 classes already?
                     </h3>
                     <p>You go to work anyway.</p>
                 </div>;
@@ -165,7 +165,7 @@ class WeekDay extends IScene {
                 } else {
                     this.app.pushSceneNext(new Work(this.app));
                 }
-                this.app.addText(txt); 
+                this.app.addText(txt);
                 this.app.next();
             },
         }
