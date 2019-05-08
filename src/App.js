@@ -61,7 +61,6 @@ class App extends Component {
         this.setState({actionProb: Math.random()});
         if(this.state.balance >= this.state.goal) {
             this.state.sceneLst.pushNext(new Win(this.app));
-            this.next();
         }
         else if(this.state.balance <= 0) {
             this.state.sceneLst.pushNext(new LoseBalance(this.app));
@@ -72,18 +71,19 @@ class App extends Component {
         else if(this.state.criminality >= 100) {
             this.state.sceneLst.pushNext(new LoseCriminality(this.app));
         }
-        // this.setState({nextScene: this.state.nextScene.constructor(this)});
-        if(this.state.weekday){
-            this.addDays(5);
-            this.state.sceneLst.pushNext(new WeekEnd(this));
-        }
         else {
-            this.addDays(2);
-            this.state.sceneLst.pushNext(new WeekDay(this));
+            if(this.state.weekday){
+                this.addDays(5);
+                this.state.sceneLst.pushNext(new WeekEnd(this));
+            }
+            else {
+                this.addDays(2);
+                this.state.sceneLst.pushNext(new WeekDay(this));
+            }
+            this.setState(prevState => ({
+                weekday: !prevState.weekday
+            }));
         }
-        this.setState(prevState => ({
-            weekday: !prevState.weekday
-        }));
         this.next();
 
         // this.state.sceneLst.getBtns().forEach((btn, i) => this.actionsText[i] = btn.text);
