@@ -147,6 +147,7 @@ class Party extends IScene {
         },
     ];
 }
+
 class Gym extends IScene {
     text = <div>
         <h3> How could they!?</h3>
@@ -166,7 +167,7 @@ class Gym extends IScene {
 class Studying extends IScene {
     text = <div>
         <h3> How could they!?</h3>
-        <p> You spend the night working on things for you job and brushing up on your skills. How studious.</p>
+        <p> You spend the night working on things for your job and brushing up on your skills. How studious.</p>
     </div>
     btns = [
         {
@@ -178,6 +179,7 @@ class Studying extends IScene {
         },
     ];
 }
+
 class Home extends IScene {
     text = <div>
         <h3>Time to relax.</h3>
@@ -192,13 +194,6 @@ class Home extends IScene {
             }
         },
         {
-            text: 'Invite Friends Over',
-            func: () => {
-
-                this.app.endCycle();
-            }
-        },
-        {
             text: 'Studying',
             func: () => {
               this.app.pushSceneNext(new Studying(this.app));
@@ -208,6 +203,7 @@ class Home extends IScene {
 
     ];
 }
+
 class goOut extends IScene {
   text = <div>
       <h3> It's the weekend. </h3>
@@ -240,6 +236,7 @@ class goOut extends IScene {
       },
   ];
 }
+
 class WeekEnd extends IScene {
     text = <div>
         <h3> It's the weekend. </h3>
@@ -270,4 +267,5 @@ class WeekEnd extends IScene {
         return this.app.days === 0;
     }
 }
+
 export default WeekEnd;

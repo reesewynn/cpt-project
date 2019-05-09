@@ -43,7 +43,7 @@ class CopCheckDevice extends IScene {
                             Unfortunately, the whole drama makes you miss work.
                         </p>
                     </div>
-                    this.app.changeMoney(-5000);
+                    this.app.changeMoney(-500);
                     this.app.changeFame(10);
                     this.app.changeEmployability(-2);
                     this.app.changePrivacy(-5);

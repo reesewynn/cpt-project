@@ -137,9 +137,9 @@ class WeekDay extends IScene {
             func: () => {
                 this.app.changeMoney(150);
                 let y = Math.random();
-                if (y > .7) {
+                if (y > .75) {
                     this.app.pushSceneNext(new WitnessCopStop(this.app));
-                } else if (y > .4) {
+                } else if (y > .5) {
                     this.app.pushSceneNext(new CopStop(this.app));
                 } else {
                     this.app.pushSceneNext(new Work(this.app));
@@ -158,9 +158,9 @@ class WeekDay extends IScene {
                     <p>You go to work anyway.</p>
                 </div>;
                 let y = Math.random();
-                if (y > .7) {
+                if (y > .75) {
                     this.app.pushSceneNext(new WitnessCopStop(this.app));
-                } else if (y > .4) {
+                } else if (y > .5) {
                     this.app.pushSceneNext(new CopStop(this.app));
                 } else {
                     this.app.pushSceneNext(new Work(this.app));

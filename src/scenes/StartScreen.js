@@ -6,13 +6,13 @@ class StartScreen extends IScene {
     //example of how to create display text
     text = <div>
         <h3> Welcome To Privacy Buyout! </h3>
-        <p> You have some dark backstory and you have to earn back your privacy or the mob? will come and get you yada
+        <p> You have some dark backstory and you have to earn back your privacy or the mob will come and get you yada
         yada yada...</p>
-        <p> In Privacy Buyout, you play as an individual with a dark past. You have only one goal. To earn up
+        <p> In Privacy Buyout, you play as an individual with a dark past. You have only one goal: to earn
             enough to buy a ticket to Privacylandia. With said ticket you can buy back the entirety of your privacy.</p>
-        <p> The rules are simply to read the onscreen prompt and chose an available button below! You'll know a button
-        is available when it has text and you can click on it!</p>
-        <p> To play, press the "Begin" button below...</p>
+        <p> The rules are simple: read the onscreen prompt and choose an available button below! You'll know a button
+        is available when it has text and you can click on it.</p>
+        <p> To play, press the "Begin" button below.</p>
         </div>;
     //example of demonstrating buttons MAX 3
     btns = [

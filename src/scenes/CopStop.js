@@ -44,7 +44,7 @@ class ArrestedEvidence extends IScene {
             activity,” the cop announces.
         </p>
         <p>
-            Do you hire your own lawyer for $5000?
+            Do you hire your own lawyer for $500?
         </p>
     </div>;
 
@@ -119,7 +119,7 @@ class ArrestedNoEvidence extends IScene {
             activity,” the cop announces.
         </p>
         <p>
-            Do you hire your own lawyer for $5000?
+            Do you hire your own lawyer for $500?
         </p>
     </div>;
 
@@ -147,7 +147,7 @@ class ArrestedNoEvidence extends IScene {
                         Unfortunately, the whole drama makes you miss work.
                     </p>
                 </div>
-                this.app.changeMoney(-5000);
+                this.app.changeMoney(-500);
                 this.app.changeFame(10);
                 this.app.changeEmployability(-2);
                 this.app.changePrivacy(-5);
