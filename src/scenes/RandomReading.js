@@ -19,7 +19,7 @@ class RandomReadingEff extends IScene {
         {
             text: 'Continue',
             func: () => {
-                this.app.knowRights = true;
+                this.app.setKnowRights();
                 this.app.changePrivacy(2);
                 this.app.endCycle();
             },
@@ -101,11 +101,11 @@ class RandomReadingStart extends IScene {
             func: () => {
                 var x = Math.random();
 
-                if (x < 0.25) {
+                if (x < 0.4) {
                     this.app.pushSceneNext(new RandomReadingEff(this.app))
-                } else if (x < 0.5) {
+                } else if (x < 0.6) {
                     this.app.pushSceneNext(new RandomReadingWiki(this.app))
-                } else if (x < 0.75) {
+                } else if (x < 0.8) {
                     this.app.pushSceneNext(new RandomReadingCourt(this.app))
                 } else {
                     this.app.pushSceneNext(new RandomReadingNews(this.app))

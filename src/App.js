@@ -110,6 +110,10 @@ class App extends Component {
         }));
     }
 
+    setKnowRights() {
+        this.setState({knowRights: true});
+    }
+
     changePrivacy(amt) {
         this.setState(prevState => ({
             privacy: prevState.privacy + amt
