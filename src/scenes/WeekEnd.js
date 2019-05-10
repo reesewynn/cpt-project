@@ -6,7 +6,16 @@ import EndCycleScene from "./EndCycleScene";
 
 class NetflixEx extends IScene {
     text = <div>
-        <p> Unbeknownst to you, your watch history just got added to a special database. Netflix is holding a competition for better recommendation algorithms. This database, with your semi-anonymized data, will serve as a training set. Better hope nobody digs into that database too hard and finds out about your stranger preferences. </p>
+        <p> 
+            Unbeknownst to you, your watch history just got added to a special 
+            database. Netflix is holding a competition for better recommendation 
+            algorithms. This database, with your semi-anonymized data, will 
+            serve as a training set. 
+        </p>
+        <p>
+            Better hope nobody digs into that database too hard and finds out 
+            about your stranger preferences. 
+        </p>
     </div>;
 
     btns = [
@@ -15,7 +24,7 @@ class NetflixEx extends IScene {
             func: () => {
                 this.app.changePrivacy(-2);
                 this.app.endCycle();
-            }
+            },
         },
     ];
 }
@@ -23,8 +32,8 @@ class NetflixEx extends IScene {
 class PassingTime extends IScene {
 
     text = <div>
-        <h3>Time to relax.</h3>
-        <p> You decided to be a hermit and stay at home. So what do you want to do?</p>
+        <h3>What to do...</h3>
+        <p> You have some free time, but don't feel like studying. So what do you want to do?</p>
     </div>;
 
     btns = [
@@ -183,7 +192,7 @@ class Studying extends IScene {
 class Home extends IScene {
     text = <div>
         <h3>Time to relax.</h3>
-        <p> You decided to be a hermit and stay at home. So what do you want to do?</p>
+        <p> You decide to be a hermit and stay at home. So what do you want to do?</p>
     </div>;
     btns = [
         {

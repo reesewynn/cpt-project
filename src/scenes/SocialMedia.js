@@ -5,8 +5,12 @@ import React from "react";
 class SMTNoSwat extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> You spend a pleasant few hours watching before drifting off to sleep. </p>
-        </div>;
+        <p> 
+            You spend a pleasant few hours watching before drifting off to 
+            sleep. 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Continue',
@@ -20,8 +24,13 @@ class SMTNoSwat extends IScene {
 class SMTSwatPost extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> Shocked and surprised, you take to social media to rant about how you’ve lost faith in humanity. </p>
-        </div>;
+        <h3>Utterly reprehensible...</h3>
+        <p> 
+            Shocked and surprised, you take to social media to rant about how 
+            you’ve lost faith in humanity. 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Continue',
@@ -37,8 +46,13 @@ class SMTSwatPost extends IScene {
 class SMTSwatNoPost extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> You’re stunned for the rest of the night, and can’t get the incident out of your head as you get ready for bed. </p>
-        </div>;
+        <h3>Unbelievable...</h3>
+        <p> 
+            You’re stunned for the rest of the night, and can’t get the incident 
+            out of your head as you get ready for bed. 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Continue',
@@ -53,8 +67,15 @@ class SMTSwatNoPost extends IScene {
 class SMTSwat extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> You’re just starting to nod off when a loud noise startles you. It’s coming from the stream. You watch in horror as the SWAT team charges in and the streamer gets tackled to the floor. What do you do?</p>
-        </div>;
+        <h3>Bang! "Get on the ground!"</h3>
+        <p> 
+            You’re just starting to nod off when a loud noise startles you. 
+            It’s coming from the stream. You watch in horror as the SWAT team 
+            charges in and the streamer gets tackled to the floor. 
+        </p>
+        <p>What do you do?</p>
+    </div>;
+
     btns = [
         {
             text: 'Post about this',
@@ -77,7 +98,12 @@ class SMTSwat extends IScene {
 class SMTJoke extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> Laughing to yourself, you comment a quick joke about how bad the streamer is palying. At that exact moment, they happen to looksup and read your comment. After a pause, they chuckle saying “Fuck off, twitch chat." </p>
+        <p> 
+            Laughing to yourself, you comment a quick joke about how bad the 
+            streamer is playing. At that exact moment, they happen to look up 
+            and read your comment. After a pause, they chuckle saying “Fuck off, 
+            twitch chat." 
+        </p>
         </div>;
     btns = [
         {
@@ -98,8 +124,13 @@ class SMTJoke extends IScene {
 class SocialMediaTwitch extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> Feeling extra lazy, you decide to watch a stream. You settle down, enjoying watching and laughing at how bad they are. Man, they’re really having an off night. Do you want to something in chat? </p>
-        </div>;
+        <p> 
+            Feeling extra lazy, you decide to watch a stream. You settle down, 
+            enjoying watching and laughing at how bad they are. Man, they’re 
+            really having an off night. Do you want to something in chat? 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Just Lurk',
@@ -126,8 +157,14 @@ class SocialMediaTwitch extends IScene {
 class SMYTTomChange extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> You decide it’s a good idea to take a look at your own Facebook privacy settings. When you’re done fiddling with them, you switch back over to your YouTube tab and spend the rest of your night happily watching random videos. </p>
-        </div>;
+        <p> 
+            You decide it’s a good idea to take a look at your own Facebook 
+            privacy settings. When you’re done fiddling with them, you switch 
+            back over to your YouTube tab and spend the rest of your night 
+            happily watching random videos. 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Continue',
@@ -143,8 +180,11 @@ class SMYTTomChange extends IScene {
 class SMYTTomBlogAnxious extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> As you read, you grow more and more fearful of your own privacy. </p>
-        </div>;
+        <p> 
+            As you read, you grow more and more fearful for your own privacy. 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Continue',
@@ -160,8 +200,12 @@ class SMYTTomBlogAnxious extends IScene {
 class SMYTTomBlogAmused extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> You laugh as you read through the searches; some of these are pretty funny. It’s amazing how careless some people are.  </p>
-        </div>;
+        <p> 
+            You laugh as you read through the searches; some of these are pretty 
+            funny. It’s amazing how careless some people are.  
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Continue',
@@ -177,8 +221,13 @@ class SMYTTomBlogAmused extends IScene {
 class SMYTTomBlog extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> As you’re looking through Tom Scott’s blog, you find yourself on a super old post with a list of searches made through Facebook Graph. As you read through it, you are: </p>
-        </div>;
+        <p> 
+            As you’re looking through Tom Scott’s blog, you find yourself on a 
+            super old post with a list of searches made through Facebook Graph. 
+            As you read through it, you are: 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Anxious',
@@ -201,8 +250,13 @@ class SMYTTomBlog extends IScene {
 class SMYTTomCool extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> That was actually pretty cool. Rare that someone interests you enough to actually follow the links that everyone puts in the descriptions. You follow a link through to his blog. </p>
-        </div>;
+        <p> 
+            That was actually pretty cool. Rare that someone interests you 
+            enough to actually follow the links that everyone puts in the 
+            descriptions. You follow a link through to his blog. 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Continue',
@@ -218,8 +272,15 @@ class SMYTTomCool extends IScene {
 class SMYTTomBoring extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> Good lord, this guy is boring. You see that the next video on the autoplay queue is another one of his. As you idly contemplate whether or not it’s worth the effort to stop it, the next video starts. It’s actually a little interesting, and you decide to click through to his blog. </p>
-        </div>;
+        <p> 
+            Good lord, this guy is boring. You see that the next video on the 
+            autoplay queue is another one of his. As you idly contemplate 
+            whether or not it’s worth the effort to stop it, the next video 
+            starts. It’s actually a little interesting, and you decide to click 
+            through to his blog. 
+        </p>
+    </div>;
+    
     btns = [
         {
             text: 'Continue',
@@ -235,8 +296,10 @@ class SMYTTomBoring extends IScene {
 class SMYTTom extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> You sit back as the first few minutes of the video plays. What do you think?</p>
-        </div>;
+        <p>You sit back as the first few minutes of the video plays. </p>
+        <p>What do you think?</p>
+    </div>;
+    
     btns = [
         {
             text: 'Pretty Boring',
@@ -256,42 +319,57 @@ class SMYTTom extends IScene {
 }
 
 class SMYTEdu extends IScene{
-  //example of how to crate display text
-  text = <div>
-      <p> You sit back as some random educational video plays. The rest of the night passes in a blur of random explanation videos. By the end of it, you have a vague feeling of having learned many interesting facts.</p>
-      </div>;
-  btns = [
-      {
-          text: 'Continue',
-          func: () => {
-              this.app.changeEmployability(2);
-              this.app.endCycle();
-          },
-      },
-  ];
+    //example of how to crate display text
+    text = <div>
+        <p> 
+            You sit back as some random educational video plays. The rest of the 
+            night passes in a blur of random explanation videos. By the end of 
+            it, you have a vague feeling of having learned many interesting 
+            facts.
+        </p>
+    </div>;
+    
+    btns = [
+        {
+            text: 'Continue',
+            func: () => {
+                this.app.changeEmployability(2);
+                this.app.endCycle();
+            },
+        },
+    ];
 }
 
 class SMYTRandom extends IScene{
-  //example of how to crate display text
-  text = <div>
-      <p> You sit back as some random video plays. The rest of the night passes fairly pleasantly, with you sitting zombie-like in front of your laptop. You head to the bed, feeling like it was a night well wasted. </p>
-      </div>;
-  btns = [
-      {
-          text: 'Continue',
-          func: () => {
-              this.app.endCycle();
-          },
-      },
-  ];
+    //example of how to crate display text
+    text = <div>
+        <p> 
+            You sit back as some random video plays. The rest of the night 
+            passes fairly pleasantly, with you sitting zombie-like in front of 
+            your laptop. You head to bed, feeling like it was a night 
+            well-wasted. 
+        </p>
+    </div>;
+
+    btns = [
+        {
+            text: 'Continue',
+            func: () => {
+                this.app.endCycle();
+            },
+        },
+    ];
 }
 
 //leads to SMYTTom, SMYTEdu, SMYTRandom
 class SocialMediaYT extends IScene {
-    //example of how to crate display text
     text = <div>
-        <p> Feeling lazy, you just click over to your recommendations. Scanning down the list, you see a couple of options. You choose a video from: </p>
-        </div>;
+        <p> 
+            Feeling lazy, you just click over to your recommendations. Scanning 
+            down the list, you see a couple of options. You choose a video from: 
+        </p>
+    </div>;
+    
     btns = [
         {
             text: 'Tom Scott',
@@ -307,7 +385,6 @@ class SocialMediaYT extends IScene {
                 this.app.next();
             },
         },
-
         {
             text: 'A Random Channel',
             func: () => {
@@ -321,27 +398,35 @@ class SocialMediaYT extends IScene {
 class Surfing extends IScene {
     text = <div>
         <h3>Who Doesn't Like Cookies?</h3>
-        <p> You browse around online and try out some new sites. The sites have been using your cookies and selling
-            your data to databrokers! </p>
-        <p>This data is harvested and a comprehensive profile based on your browsing habits is publically
-        available!</p>
-    </div>
+        <p> 
+            You browse around online and try out some new sites. The sites have 
+            been using your cookies and selling your data to databrokers! 
+        </p>
+        <p>
+            This data is harvested and a comprehensive profile based on your 
+            browsing habits is publically available!
+        </p>
+    </div>;
+
     btns = [
         {
             text: "Continue",
             func: () => {
                 this.app.endCycle();
-            }
-        }
+            },
+        },
     ];
 }
 
 //leads to SocialMediaYT, SocialMediaTwitch
 class SocialMediaStart extends IScene {
-    //example of how to crate display text
     text = <div>
-        <p> You think about what kind of mood you're in tonight, and end up deciding on: </p>
-        </div>;
+        <p> 
+            You think about what kind of mood you're in tonight, and end up 
+            deciding on: 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'YouTube',

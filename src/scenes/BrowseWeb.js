@@ -7,34 +7,28 @@ import BrowsePornStart from "./BrowsePorn"
 
 //leads to SocialMediaStart, ReadingListStart, PornStart
 class PlatformDecide extends IScene {
-    //example of how to crate display text
     text = <div>
-        <p> You settle down and open you open your laptop.
-        What do you want to do? </p>
-        </div>;
+        <p>You settle down and open you open your laptop.</p>
+        <p>What do you want to do? </p>
+    </div>;
+
     btns = [
         {
-            //every button needs a text field
             text: 'Browse the Web',
-            //lambda's tell the button how to behave
             func: () => {
                 this.app.pushSceneNext(new SocialMediaStart(this.app))
                 this.app.next();
             },
         },
         {
-            //every button needs a text field
             text: 'Random Reading',
-            //lambda's tell the button how to behave
             func: () => {
                 this.app.pushSceneNext(new RandomReadingStart(this.app))
                 this.app.next();
             },
         },
         {
-            //every button needs a text field
             text: 'Porn',
-            //lambda's tell the button how to behave
             func: () => {
                 this.app.pushSceneNext(new BrowsePornStart(this.app))
                 this.app.next();
@@ -45,19 +39,19 @@ class PlatformDecide extends IScene {
 
 //leads to GeekSqaudStart
 class LaptopBreak extends IScene {
-    //example of how to crate display text
     text = <div>
-        <p> As you’re walking, you accidentally drop your laptop.
+        <h3>I threw it on the ground!</h3>
+        <p> 
+            As you’re walking, you accidentally drop your laptop.
             Hoping beyond hope, you pick it up and inspect it.
-            It seems fine… apart from the ominous whirring.
-            You decide to deal with it tomorrow. You decide to head
-            out to get it fixed. </p>
-        </div>;
+            It seems fine…apart from the ominous whirring.
+            You decide to head out tomorrow to get it fixed. 
+        </p>
+    </div>;
+
     btns = [
         {
-            //every button needs a text field
             text: 'Continue',
-            //lambda's tell the button how to behave
             func: () => {
                 this.app.pushSceneNext(new GeekSquadStart(this.app))
                 this.app.next();
@@ -69,14 +63,16 @@ class LaptopBreak extends IScene {
 //leads to LaptopBreak or PlatformDecide
 class BrowseWebStart extends IScene {
     text = <div>
-        <p> You decide to spend the night just on your laptop. You head to the: </p>
+        <p> 
+            You decide to spend the night just on your laptop. You head to the: 
+        </p>
     </div>;
 
     btns = [
         {
             text: 'Living room',
             func: () => {
-                if (Math.random() < 0.1) {
+                if (Math.random() < 0.25) {
                     this.app.pushSceneNext(new LaptopBreak(this.app));
                     this.app.next();
                 } else {
@@ -88,7 +84,7 @@ class BrowseWebStart extends IScene {
         {
             text: 'Bedroom',
             func: () => {
-                if (Math.random() < 0.1) {
+                if (Math.random() < 0.25) {
                     this.app.pushSceneNext(new LaptopBreak(this.app));
                     this.app.next();
                 } else {
@@ -100,7 +96,7 @@ class BrowseWebStart extends IScene {
         {
             text: 'Office',
             func: () => {
-                if (Math.random() < 0.1) {
+                if (Math.random() < 0.25) {
                     this.app.pushSceneNext(new LaptopBreak(this.app));
                     this.app.next();
                 } else {

@@ -2,24 +2,25 @@ import IScene from '../IScene';
 import React from "react";
 
 class RandomReadingEff extends IScene {
-    //example of how to crate display text
     text = <div>
-        <p> The first one happens to be an article from the EFF about knowing your rights.
-        It contains lots of detailed information about the best actions to take
-        in various circumstances. You're glad this this happened to be at the top
-        of your list and read it carefully. You then spend the rest of the night
-        reading through other EFF articles. </p>
-        </div>;
+        <p> 
+            The first one happens to be an article from the EFF about knowing 
+            your rights. It contains lots of detailed information about the best 
+            actions to take in various circumstances. 
+        </p>
+        <p>
+            You're glad this this happened to be at the top of your list and 
+            you read it carefully. You then spend the rest of the night reading 
+            through other EFF articles. 
+        </p>
+    </div>;
 
     btns = [
         {
-            //every button needs a text field
             text: 'Continue',
-            //lambda's tell the button how to behave
             func: () => {
                 this.app.knowRights = true;
                 this.app.changePrivacy(2);
-
                 this.app.endCycle();
             },
         },
@@ -27,16 +28,16 @@ class RandomReadingEff extends IScene {
 }
 
 class RandomReadingWiki extends IScene {
-    //example of how to crate display text
     text = <div>
-        <p> The first one happens to be some random Wikipedia article. You spend the rest of falling down the rabbit hole of random links. </p>
-        </div>;
+        <p> 
+            The first one happens to be some random Wikipedia article. You spend 
+            the rest of the night falling down the rabbit hole of random links. 
+        </p>
+    </div>;
 
     btns = [
         {
-            //every button needs a text field
             text: 'Continue',
-            //lambda's tell the button how to behave
             func: () => {
                 this.app.endCycle();
             },
@@ -45,20 +46,20 @@ class RandomReadingWiki extends IScene {
 }
 
 class RandomReadingCourt extends IScene {
-    //example of how to crate display text
     text = <div>
-        <p> The first one happens to be a court case that you had bookmarked ages ago. You spend the evening pleasantly intellecuting stimulating evening dissecting this case and the opinions. </p>
-        </div>;
+        <p> 
+            The first one happens to be a court case that you had bookmarked 
+            ages ago. You spend an pleasant, intellectually-stimulating evening 
+            dissecting this case and the opinions. 
+        </p>
+    </div>;
 
     btns = [
         {
-            //every button needs a text field
             text: 'Continue',
-            //lambda's tell the button how to behave
             func: () => {
-                this.app.changeEmployability(2);
+                this.app.changeEmployability(4);
                 this.app.changePrivacy(2);
-
                 this.app.endCycle();
             },
         },
@@ -66,16 +67,17 @@ class RandomReadingCourt extends IScene {
 }
 
 class RandomReadingNews extends IScene {
-    //example of how to crate display text
     text = <div>
-        <p> The first one happens to be a random news story from a couple of weeks ago. You don’t know why you bookmarked this, it’s so boring. You end up nodding off as you’re reading. </p>
-        </div>;
+        <p> 
+            The first one happens to be a random news story from a couple of 
+            weeks ago. You don’t know why you bookmarked this; it’s so boring. 
+            You end up nodding off as you’re reading. 
+        </p>
+    </div>;
 
     btns = [
         {
-            //every button needs a text field
             text: 'Continue',
-            //lambda's tell the button how to behave
             func: () => {
                 this.app.endCycle();
             },
@@ -86,17 +88,16 @@ class RandomReadingNews extends IScene {
 //leads to RandomReadingEff, RandomReadingWiki, RandomReadingCourt,
 //         RandomReadingNews
 class RandomReadingStart extends IScene {
-    //example of how to crate display text
     text = <div>
-        <p> You decide to go through your long reading list. You open the first
-        one. </p>
-        </div>;
+        <p> 
+            You decide to go through your long reading list and start clicking 
+            through your bookmarks.
+        </p>
+    </div>;
 
     btns = [
         {
-            //every button needs a text field
             text: 'Continue',
-            //lambda's tell the button how to behave
             func: () => {
                 var x = Math.random();
 

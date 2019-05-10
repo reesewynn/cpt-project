@@ -5,7 +5,8 @@ class BrowsePornClean extends IScene {
     //example of how to crate display text
     text = <div>
         <p> Afterwards, you fix yourself a midnight snack and head to bed. </p>
-        </div>;
+    </div>;
+
     btns = [
         {
             text: 'Continue',
@@ -19,8 +20,15 @@ class BrowsePornClean extends IScene {
 class BrowsePornInfected extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> It’s pretty sketchy. In your distracted state, you don’t notice as the website quietly infects your laptop. Unbeknownst to you, there are now some shockingly explicitly named files on your hard drive with highly questionable contents. Probably should have had better anti-virus software. </p>
-        </div>;
+        <p> 
+            It’s pretty sketchy. In your distracted state, you don’t notice as 
+            the website quietly infects your laptop. Unbeknownst to you, there 
+            are now some shockingly explicitly-named files on your hard drive 
+            with highly questionable contents. Probably should have had better 
+            anti-virus software. 
+        </p>
+    </div>;
+
     btns = [
         {
             text: 'Continue',
@@ -36,8 +44,11 @@ class BrowsePornInfected extends IScene {
 class BrowsePornStart extends IScene {
     //example of how to crate display text
     text = <div>
-        <p> You just open up some porn. It's been a pretty long and tiring day. </p>
-        </div>;
+        <p> 
+            You just open up some porn. It's been a pretty long and tiring day. 
+        </p>
+    </div>;
+    
     btns = [
         {
             text: 'Continue',
