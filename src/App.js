@@ -114,6 +114,10 @@ class App extends Component {
         this.setState({knowRights: true});
     }
 
+    setLaptopInfected() {
+        this.setState({laptop_infected: true});
+    }
+
     changePrivacy(amt) {
         this.setState(prevState => ({
             privacy: prevState.privacy + amt

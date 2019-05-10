@@ -33,7 +33,7 @@ class BrowsePornInfected extends IScene {
         {
             text: 'Continue',
             func: () => {
-                this.app.state.laptop_infected = true;
+                this.app.setLaptopInfected();
                 this.app.endCycle();
             },
         },
@@ -48,7 +48,7 @@ class BrowsePornStart extends IScene {
             You just open up some porn. It's been a pretty long and tiring day. 
         </p>
     </div>;
-    
+
     btns = [
         {
             text: 'Continue',
